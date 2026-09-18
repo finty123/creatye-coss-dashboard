@@ -1,0 +1,40 @@
+name: Jaxx Quality & Audit Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Jaxx CLI
+        run: |
+          git clone --depth 1 https://github.com/EfraimRochaJaxx/.agent-jaxx-model.git /tmp/agent-jaxx-model
+          cd /tmp/agent-jaxx-model
+          npm ci || npm install
+          npm run build
+          npm link ./packages/cli
+
+      - name: Install dependencies (if package.json exists)
+        run: |
+          if [ -f package.json ]; then
+            npm ci || npm install
+          else
+            echo "No package.json found, skipping dependency installation."
+          fi
+
+      - name: Verify Quality, Audit Trail & Blast Radius
+        run: jaxx verify
