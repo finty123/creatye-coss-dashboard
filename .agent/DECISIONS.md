@@ -260,3 +260,94 @@ Format: lightweight ADRs.
 - **Context:** Home must be operational and premium without becoming promotional dashboard theater.
 - **Decision:** Command Center visual direction is modular, premium, operational, and inspired by Brex/Ramp quality for sections such as Attention, Today, Performance, and Opportunities.
 - **Consequences:** Future Home visuals should use elegant operational cards and action-oriented modules, not giant decorative metrics or generic SaaS dashboard patterns.
+
+## ADR-038: Technical architecture is modular monolith plus dedicated worker
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Creatye Studio needs strong domain boundaries and async execution without premature microservices.
+- **Decision:** Use a TypeScript modular monolith with `apps/web`, a dedicated `apps/worker`, and domain/infrastructure packages.
+- **Consequences:** Domain boundaries should permit future extraction but remain in one repo/application architecture initially.
+
+## ADR-039: PostgreSQL is the system of record
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Publishing, automation, media, analytics, scheduling, and tenancy require durable relational state.
+- **Decision:** PostgreSQL is the authoritative system of record.
+- **Consequences:** Redis/BullMQ cannot be business truth; critical work must persist durable state before async execution.
+
+## ADR-040: Prisma is the single authoritative ORM/schema direction
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Legacy risks include divergent Prisma schemas and missing relational integrity.
+- **Decision:** Use one Prisma schema/data layer as the single ORM/schema authority unless future repository evidence justifies a documented change.
+- **Consequences:** No duplicate Prisma schemas or independently evolving database definitions.
+
+## ADR-041: Supabase Auth provides authentication; Creatye owns authorization
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Authentication and authorization have different responsibilities and legacy auth was incomplete.
+- **Decision:** Use Supabase Auth for authentication while Creatye domain logic owns workspace membership, roles/capabilities, resource ownership, and page-level access where appropriate.
+- **Consequences:** Every server-side mutation must enforce authorization; UI visibility is not enough.
+
+## ADR-042: Workspace is the tenant boundary
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Pages, media, content, automations, publications, analytics, AI operations, notifications, and templates are workspace-owned or workspace-scoped.
+- **Decision:** Workspace is the tenant boundary and tenant-owned resources must be explicitly scoped.
+- **Consequences:** Architecture must prevent accidental cross-workspace queries using application scoping, database constraints, and RLS where appropriate.
+
+## ADR-043: Cloudflare R2 stores media objects
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Creatye requires uploaded media, derived media, render outputs, thumbnails, and temporary artifacts without routing large binaries through Web requests.
+- **Decision:** Use Cloudflare R2 for object storage and keep metadata/references in PostgreSQL.
+- **Consequences:** Storage keys must be deterministic/safe and cleanup must be reference-aware.
+
+## ADR-044: Redis/BullMQ coordinates async work with durable DB-backed intent
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Media processing, AI, publishing, automation execution, analytics, and retries need background execution.
+- **Decision:** Use Redis/BullMQ with a dedicated worker, while persisting critical state/job intent in PostgreSQL.
+- **Consequences:** Queue loss must not silently lose critical business work; outbox/durable job intent is required where appropriate.
+
+## ADR-045: Scheduled publishing is DB-backed
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Scheduled publications must survive Redis loss and long time horizons.
+- **Decision:** PostgreSQL is source of truth for schedules; scheduler detects due publications and enqueues durable jobs.
+- **Consequences:** Redis delayed jobs are not the only schedule source.
+
+## ADR-046: Webhooks are durable and idempotent
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Provider webhooks can be duplicated, delayed, malformed, or delivered while queues/workers are unavailable.
+- **Decision:** Webhook endpoints verify signatures, persist inbox/dedup records, respond quickly, and process asynchronously.
+- **Consequences:** Provider payloads are normalized at integration boundaries and deduplication keys are mandatory.
+
+## ADR-047: Automation execution uses versioned executable definitions
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Edited automations must not mutate structures used by active executions.
+- **Decision:** Automation has Draft Flow Version, Published Flow Version, and Execution references the Published Version.
+- **Consequences:** There is one canonical automation runtime with persisted execution state and idempotent step handling.
+
+## ADR-048: Provider integrations are isolated
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Meta and future social providers differ and should not leak provider-specific structures throughout the app.
+- **Decision:** Provider clients, webhooks, payload normalization, and provider-specific errors stay behind integration boundaries.
+- **Consequences:** Social Presence models normalize provider differences without pretending all providers behave identically.
+
+## ADR-049: Analytics uses typed events plus derived metrics
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Approved analytics UX requires KPI, trend, content, insight, and action without repeatedly scanning transactional tables.
+- **Decision:** Use typed append-only/product events with derived/aggregated metrics, PostgreSQL-first initially.
+- **Consequences:** Events must not become uncontrolled free-form strings and should include operational dimensions.
+
+## ADR-050: AI uses provider abstraction and server-side governance
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** AI is transversal and must not bind product logic directly to one provider.
+- **Decision:** Use an AI provider abstraction with server-side credentials, prompt/model governance, usage/cost metadata, error normalization, and async execution when appropriate.
+- **Consequences:** Do not build unnecessary autonomous-agent architecture or expose provider internals to UI.

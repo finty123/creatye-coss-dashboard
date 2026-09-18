@@ -169,3 +169,39 @@ Use this index to discover relevant project documentation without loading everyt
 - Analytics visual task -> `VISUAL_CALIBRATION_SPEC`, `ANALYTICS_DIRECTION`, relevant product and design docs.
 - Controls/typography task -> `VISUAL_CALIBRATION_SPEC`, `CONTROL_FINISHING`, `docs/design/TYPOGRAPHY.md`, relevant component taxonomy.
 - Reference check -> `VISUAL_CALIBRATION_SPEC`, `REFERENCE_BOARD`, then the relevant specialized calibration doc.
+
+## Technical Architecture
+
+- `docs/architecture/TECHNICAL_ARCHITECTURE_SPEC.md` - authoritative entry point for M005 technical architecture.
+- `docs/architecture/SYSTEM_CONTEXT.md` - load for system context diagrams and high-level responsibility split.
+- `docs/architecture/RUNTIME_TOPOLOGY.md` - load for Web, Worker, Postgres, Redis, R2, provider, and observability runtime responsibilities.
+- `docs/architecture/APPLICATION_ARCHITECTURE.md` - load for layers, validation, error model, transactions, and concurrency.
+- `docs/architecture/REPOSITORY_STRUCTURE.md` - load for future monorepo layout, package ownership, and dependency rules.
+- `docs/architecture/DOMAIN_BOUNDARIES.md` - load when mapping product domains to technical boundaries.
+- `docs/architecture/DATA_ARCHITECTURE.md` - load for PostgreSQL, Prisma, schema, tenancy, status, retention, and time rules.
+- `docs/architecture/AUTH_SECURITY_ARCHITECTURE.md` - load for authentication, authorization, workspace isolation, secrets, signed uploads, webhook security, and baseline security.
+- `docs/architecture/INTEGRATION_ARCHITECTURE.md` - load for Meta/social provider isolation, webhook processing, Social Connection vs Page, and provider normalization.
+- `docs/architecture/AUTOMATION_ARCHITECTURE.md` - load for automation authoring, versioning, runtime, execution, waits, and idempotency.
+- `docs/architecture/MEDIA_PIPELINE_ARCHITECTURE.md` - load for R2, direct uploads, media processing, FFmpeg, Studio outputs, and render jobs.
+- `docs/architecture/PUBLISHING_ARCHITECTURE.md` - load for Publication, Target, Publish Attempt, Published Content, scheduled publishing, and retries.
+- `docs/architecture/ANALYTICS_ARCHITECTURE.md` - load for typed events, metrics, aggregation, and analytics event dimensions.
+- `docs/architecture/AI_ARCHITECTURE.md` - load for AI provider abstraction, server-side model/prompt/usage/cost governance, and async AI work.
+- `docs/architecture/OBSERVABILITY_RELIABILITY.md` - load for structured logs, correlation, reliability, outbox, retries, and idempotency.
+- `docs/architecture/DEPLOYMENT_ARCHITECTURE.md` - load for deployment topology, environments, secrets, and worker hosting constraints.
+- `docs/architecture/TESTING_ARCHITECTURE.md` - load for unit, integration, contract, and E2E test strategy.
+- `docs/architecture/LEGACY_TECHNICAL_MAPPING.md` - load before using any legacy technical knowledge.
+
+## M005 technical architecture loading guide
+
+- Database task -> `TECHNICAL_ARCHITECTURE_SPEC`, `DATA_ARCHITECTURE`, `DOMAIN_BOUNDARIES`, relevant product docs.
+- Auth/security task -> `AUTH_SECURITY_ARCHITECTURE`, `DATA_ARCHITECTURE`, relevant product/domain docs.
+- Meta/social integration task -> `INTEGRATION_ARCHITECTURE`, `AUTH_SECURITY_ARCHITECTURE`, Social Presence product docs.
+- Automation runtime task -> `AUTOMATION_ARCHITECTURE`, Automation product docs, relevant Web/Mobile UX docs.
+- Video Studio infrastructure task -> `MEDIA_PIPELINE_ARCHITECTURE`, Desktop/Mobile Studio UX docs, Visual Calibration Studio docs.
+- Image Studio infrastructure task -> `MEDIA_PIPELINE_ARCHITECTURE`, Desktop/Mobile Studio UX docs, Visual Calibration Studio docs.
+- Publishing task -> `PUBLISHING_ARCHITECTURE`, Publishing UX docs, Social Presence docs.
+- Analytics task -> `ANALYTICS_ARCHITECTURE`, Analytics visual calibration, Product Model.
+- AI task -> `AI_ARCHITECTURE`, Product Principles, relevant domain docs.
+- Worker/queue task -> `RUNTIME_TOPOLOGY`, `OBSERVABILITY_RELIABILITY`, relevant workload architecture doc.
+- Repository setup task -> `REPOSITORY_STRUCTURE`, `APPLICATION_ARCHITECTURE`, `DOMAIN_BOUNDARIES`.
+- Legacy review task -> `LEGACY_TECHNICAL_MAPPING`, then the relevant architecture doc.

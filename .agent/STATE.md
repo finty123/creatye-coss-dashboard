@@ -1,20 +1,20 @@
 # State - Creatye Studio
 
 ## Status
-M004_5_COMPLETE
+M005_COMPLETE
 
 ## Current milestone
-M004.5 - Visual Design Calibration
+M005 - Technical Architecture
 
 ## Current focus
-M004.5 Visual Design Calibration completed: approved reference board, visual direction, visual lock, calibration surfaces, Studio directions, dashboard/data/analytics/control direction, context index, and visual ADRs.
+M005 Technical Architecture completed: architecture style, system topology, app layers, repository structure, domain/data/auth/security/integration/automation/media/publishing/analytics/AI/observability/deployment/testing/legacy mapping are locked in documentation without product implementation.
 
 ## Last session
-session-2026-09-18T21-23-30-655Z opened by codex
+session-2026-09-18T21-39-19-042Z opened by codex
 
 ## Next steps
 1. Keep native Jaxx files as the source of truth for state, plan, progress, decisions, and verification.
-2. Start M005 - Technical Architecture only when explicitly requested.
+2. Start M006 - Repository Foundation + Design System Implementation only when explicitly requested.
 
 ## Blockers
 None.

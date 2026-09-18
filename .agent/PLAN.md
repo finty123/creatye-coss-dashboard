@@ -65,9 +65,18 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Register major visual calibration ADRs in `.agent/DECISIONS.md`.
 - [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
 
-### M005 - Technical Stack
-- [ ] Decide the technical stack.
-- [ ] Document structural technology choices through native Jaxx decisions.
+### M005 - Technical Architecture
+- [x] Define architecture style, topology, application layers, repository structure, and dependency rules.
+- [x] Define database, auth/security, multi-tenancy, storage/media, async processing, idempotency, scheduling, and transaction/concurrency architecture.
+- [x] Define integration, automation, publishing, analytics, AI, notification, observability, deployment, environment, testing, and legacy mapping architecture.
+- [x] Create system diagrams for context, runtime, media, Meta webhooks, automation runtime, and scheduled publishing.
+- [x] Register durable technical ADRs in `.agent/DECISIONS.md`.
+- [x] Update context index for M005 documents.
+- [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
+
+### M006 - Repository Foundation + Design System Implementation
+- [ ] Create repository foundation.
+- [ ] Begin design system implementation only after M005 is complete and explicitly requested.
 
 ## Working agreements
 - One feature = one branch = one agent.

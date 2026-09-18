@@ -4,6 +4,8 @@ Reverse-chronological record of completed work.
 
 | Date | Agent | Summary | Evidence |
 | ---- | ----- | ------- | -------- |
+| 2026-09-18 | codex | Completed M005 - Technical Architecture and verified it without product implementation, frontend screens, migrations, integrations, queues, workers, or dependency installation. | `docs/architecture/`, `docs/project/CONTEXT_INDEX.md`, `.agent/DECISIONS.md`, `jaxx doctor`, `jaxx verify`, `git diff --check`, `git status` |
+| 2026-09-18 | codex | Started M005 - Technical Architecture; created architecture docs for topology, app layers, repository structure, data, auth/security, integrations, automation, media, publishing, analytics, AI, reliability, deployment, testing, and legacy mapping. | `docs/architecture/`, `docs/project/CONTEXT_INDEX.md`, `.agent/DECISIONS.md` |
 | 2026-09-18 | codex | Completed M004.5 - Visual Design Calibration and verified it without frontend implementation or technical architecture. | `docs/design/calibration/`, `docs/project/CONTEXT_INDEX.md`, `jaxx doctor`, `jaxx verify`, `git diff --check`, `git status` |
 | 2026-09-18 | codex | Started M004.5 - Visual Design Calibration; documented approved reference board, visual direction, calibration surfaces, Studio directions, dashboard/data/analytics/control direction, context index entries, and visual ADRs. | `docs/design/calibration/`, `docs/project/CONTEXT_INDEX.md`, `.agent/DECISIONS.md` |
 | 2026-09-18 | codex | Completed M004 - Mobile WebApp UX Architecture and verified it without frontend implementation or technical architecture. | `docs/ux/mobile/`, `docs/project/CONTEXT_INDEX.md`, `jaxx doctor`, `jaxx verify`, `git diff --check`, `git status` |
