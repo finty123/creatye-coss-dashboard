@@ -47,8 +47,17 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
 
 ### M004 - Mobile WebApp UX Architecture
-- [ ] Define Mobile WebApp UX architecture.
-- [ ] Use M001 product architecture, M002 design system, and M003 Web UX boundaries as context.
+- [x] Formalize Mobile as operational companion, not compressed Desktop.
+- [x] Define approved bottom navigation, global mobile shell, page context, notifications, settings, and contextual analytics/AI.
+- [x] Document Home, Content, Create, Quick Video, Quick Image, Publishing, Activity, Page Detail, Automation Mobile, and Analytics Mobile.
+- [x] Document Desktop-to-Mobile pattern translation, touch principles, mobile filters, mobile states, offline/connection awareness, density, capability matrix, screen inventory, and cross-domain flows.
+- [x] Update context index for M004 documents.
+- [x] Register structural Mobile UX decisions in `.agent/DECISIONS.md`.
+- [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
+
+### M004.5 - Visual Design Calibration
+- [ ] Calibrate visual design direction after Mobile UX Architecture.
+- [ ] Do not start until explicitly requested.
 
 ### M005 - Technical Stack
 - [ ] Decide the technical stack.

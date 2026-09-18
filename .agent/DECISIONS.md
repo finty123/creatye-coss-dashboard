@@ -169,3 +169,59 @@ Format: lightweight ADRs.
 - **Context:** Video Studio, Image Studio, and Flow Builder need different workflows but should remain cognitively consistent.
 - **Decision:** Editors share shell principles around top context/actions, primary work area/canvas, optional left source/tool panel, right inspector, selection, zoom, undo/redo, and status.
 - **Consequences:** Future editor UX can specialize by domain while preserving shared interaction expectations.
+
+## ADR-025: Mobile is the operational companion
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Desktop already owns deep configuration, building, and operational control. Mobile must not become compressed Desktop.
+- **Decision:** Mobile WebApp is the operational companion for monitoring, acting, publishing, approving, and correcting.
+- **Consequences:** Mobile UX should prioritize focused tasks, quick action, status, and operational correction over deep multi-panel workflows.
+
+## ADR-026: Mobile bottom navigation uses five approved items
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Mobile needs a focused navigation model that does not reproduce the Desktop sidebar.
+- **Decision:** Mobile bottom navigation is Home, Content, Create, Publish, and Activity, with Create as the central action.
+- **Consequences:** Pages, Automations, Analytics, Settings, and AI do not become permanent bottom navigation items by default.
+
+## ADR-027: Page is mobile global context
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Pages are central to the product but should not become a bottom-nav destination on Mobile.
+- **Decision:** Mobile exposes Page primarily as workspace/page context through the top context bar and selector.
+- **Consequences:** Home, Content, Publish, and Activity should reflect selected Page context and preserve it through journeys.
+
+## ADR-028: Full editors remain Desktop-first
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Desktop supports full Video Studio, Image Studio, and Automation Flow Builder. Mobile should support quick creation and correction.
+- **Decision:** Full editors remain Desktop-first. Mobile supports Quick Image, Quick Video, simplified flow visualization, and limited automation actions.
+- **Consequences:** Complex timeline editing, multi-panel editing, and structural automation editing are not primary Mobile requirements.
+
+## ADR-029: Analytics is contextual on Mobile
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Mobile should surface performance signals without becoming a complex analytics workspace.
+- **Decision:** Mobile analytics appears contextually in Home, Page, Content, Automation, and Publishing, with optional Analytics Summary drill-down.
+- **Consequences:** Analytics is not a required permanent bottom navigation item and should prioritize summary, trend, alert, comparison, and action.
+
+## ADR-030: Activity is the Mobile operational monitoring center
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Mobile users need a focused place to monitor publishing events, automation events, processing, failures, warnings, and completed jobs.
+- **Decision:** Activity is the Mobile operational monitoring center with Needs Attention, Processing, and Completed structures.
+- **Consequences:** Activity complements Notifications but does not replace notification alerts.
+
+## ADR-031: Desktop-to-Mobile translation uses mobile-native patterns
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Desktop patterns must be translated thoughtfully rather than compressed into Mobile.
+- **Decision:** Dropdowns become sheets when appropriate, inspectors become full sheets/focused screens, multi-panel layouts become sequential flows, tables become lists/summary rows, and bulk toolbars become limited selection actions.
+- **Consequences:** Future Mobile UX should use these translations only when appropriate and preserve touch-first clarity.
+
+## ADR-032: Mobile capability matrix governs platform scope
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Desktop and Mobile share product domains but differ in capability depth.
+- **Decision:** M004 defines a Mobile capability matrix with Command Center simplified, quick-create studios, Automation monitor/limited, Publishing full/simplified, Calendar agenda, Analytics summary, Settings simplified, Bulk limited, Templates browse/use, and AI contextual.
+- **Consequences:** Future Mobile work should follow capability depth rather than chase Desktop parity.

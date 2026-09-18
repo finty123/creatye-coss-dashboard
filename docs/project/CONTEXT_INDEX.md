@@ -115,3 +115,34 @@ Use this index to discover relevant project documentation without loading everyt
 - Analytics task -> `WEB_UX_SPEC`, `PRODUCT_AREAS`, `DATA_DENSE_PATTERNS`, `docs/design/DATA_VISUALIZATION.md`, Analytics domain docs.
 - AI UX task -> `WEB_UX_SPEC`, `PRODUCT_AREAS`, `docs/design/AI_EXPERIENCE.md`, relevant product domain docs.
 - Narrow Desktop task -> `WEB_UX_SPEC`, `RESPONSIVE_DESKTOP`, `APPLICATION_SHELL`, `DATA_DENSE_PATTERNS` if dense data is involved.
+
+## Mobile UX
+
+- `docs/ux/mobile/MOBILE_UX_SPEC.md` - start here for any Mobile WebApp UX architecture task.
+- `docs/ux/mobile/NAVIGATION.md` - load for bottom navigation, Page context entry, and forbidden automatic nav additions.
+- `docs/ux/mobile/APPLICATION_SHELL.md` - load for top context bar, workspace/page context, notifications, main content, bottom nav, sheets, and focused tasks.
+- `docs/ux/mobile/HOME.md` - load for Mobile Home command summary and attention/today/performance/opportunity behavior.
+- `docs/ux/mobile/CONTENT_CREATE.md` - load for Content, Create, Quick Image, Quick Video, templates, and quick creation flows.
+- `docs/ux/mobile/PUBLISHING.md` - load for mobile publishing agenda, views, statuses, and publishing actions.
+- `docs/ux/mobile/ACTIVITY.md` - load for operational monitoring, processing, completed jobs, failures, and system warnings.
+- `docs/ux/mobile/PAGE_CONTEXT.md` - load for Page selector, Page Detail, and Page context preservation.
+- `docs/ux/mobile/AUTOMATION_MOBILE.md` - load for mobile automation status, health, executions, errors, simplified flow viewing, and limited actions.
+- `docs/ux/mobile/ANALYTICS_MOBILE.md` - load for contextual analytics, analytics summary, trends, alerts, comparisons, and action paths.
+- `docs/ux/mobile/MOBILE_PATTERNS.md` - load for Desktop-to-Mobile pattern translation, touch principles, mobile filters, offline/connection awareness, and mobile density.
+- `docs/ux/mobile/SYSTEM_STATES.md` - load for mobile loading, skeleton, empty, processing, queued, syncing, failed, offline, permission, and expired connection states.
+- `docs/ux/mobile/CAPABILITY_MATRIX.md` - load when comparing Desktop vs Mobile responsibility.
+- `docs/ux/mobile/SCREEN_INVENTORY.md` - load when reasoning about Mobile screen count, sheets, tabs, dialogs, states, and bottom-nav exclusions.
+- `docs/ux/mobile/CORE_WORKFLOWS.md` - load for cross-domain Mobile flows.
+
+## M004 Mobile UX loading guide
+
+- Mobile Home task -> `MOBILE_UX_SPEC`, `HOME`, relevant design-system docs.
+- Mobile navigation task -> `MOBILE_UX_SPEC`, `NAVIGATION`, `APPLICATION_SHELL`.
+- Mobile publishing task -> `MOBILE_UX_SPEC`, `PUBLISHING`, Publishing product docs.
+- Mobile automation task -> `MOBILE_UX_SPEC`, `AUTOMATION_MOBILE`, Automation product docs.
+- Mobile content/create task -> `MOBILE_UX_SPEC`, `CONTENT_CREATE`, Content/Creative Production product docs.
+- Mobile Page context task -> `MOBILE_UX_SPEC`, `PAGE_CONTEXT`, Social Presence/Page product docs.
+- Mobile analytics task -> `MOBILE_UX_SPEC`, `ANALYTICS_MOBILE`, Analytics product docs, `docs/design/DATA_VISUALIZATION.md`.
+- Mobile visual task -> `MOBILE_UX_SPEC`, `docs/design/PLATFORM_DESIGN.md`, relevant design foundation.
+- Mobile state/offline task -> `MOBILE_UX_SPEC`, `SYSTEM_STATES`, `MOBILE_PATTERNS`.
+- Desktop-to-Mobile translation task -> `MOBILE_UX_SPEC`, `MOBILE_PATTERNS`, relevant Web UX and Design System docs.

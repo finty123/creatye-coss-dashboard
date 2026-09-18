@@ -1,20 +1,20 @@
 # State - Creatye Studio
 
 ## Status
-M003_COMPLETE
+M004_COMPLETE
 
 ## Current milestone
-M003 - Web UX Architecture
+M004 - Mobile WebApp UX Architecture
 
 ## Current focus
-M003 Web UX Architecture completed: approved Desktop navigation, shell, product areas, workflows, editor architecture, data-dense patterns, system states, responsive desktop, power-user patterns, context index, and UX ADRs.
+M004 Mobile WebApp UX Architecture completed: mobile companion model, bottom navigation, shell, page context, quick creation, publishing, activity, automation, analytics, mobile patterns, states, capability matrix, workflows, context index, and Mobile ADRs.
 
 ## Last session
-session-2026-09-18T20-09-33-411Z opened by codex
+session-2026-09-18T20-16-24-695Z opened by codex
 
 ## Next steps
 1. Keep native Jaxx files as the source of truth for state, plan, progress, decisions, and verification.
-2. Start M004 - Mobile WebApp UX Architecture only when explicitly requested.
+2. Start M004.5 - Visual Design Calibration only when explicitly requested.
 
 ## Blockers
 None.
