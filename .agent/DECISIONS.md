@@ -225,3 +225,38 @@ Format: lightweight ADRs.
 - **Context:** Desktop and Mobile share product domains but differ in capability depth.
 - **Decision:** M004 defines a Mobile capability matrix with Command Center simplified, quick-create studios, Automation monitor/limited, Publishing full/simplified, Calendar agenda, Analytics summary, Settings simplified, Bulk limited, Templates browse/use, and AI contextual.
 - **Consequences:** Future Mobile work should follow capability depth rather than chase Desktop parity.
+
+## ADR-033: Approved visual references are locked for calibration
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** M004.5 formalizes an already-approved visual direction and must not become open exploration.
+- **Decision:** The approved calibration references are Linear for navigation/sidebar, Brex/Ramp for Command Center quality, card/list-first operational data UI, user-approved current/desktop Studio references for Studio, Dash Social for analytics, approved mobile creator/social direction for Mobile, and Vercel Geist for typography/control finishing.
+- **Consequences:** Future visual work should borrow qualities from these references without copying brand identity or replacing Creatye's product journey.
+
+## ADR-034: Operational data UI is card/list-first
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Dense table UI is not the approved primary visual language for Creatye operations.
+- **Decision:** The primary operational data language is modern operational cards and organized list blocks.
+- **Consequences:** Pages, Automations, Publishing, Content Library, and Activity should default to card/list-first patterns; tables remain available only where comparison, bulk management, or high density materially require them.
+
+## ADR-035: Desktop Studio uses a creator-first step journey
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Current Creatye Studio's SELECT -> CUSTOMIZE -> PUBLISH journey is valuable and should be refined rather than replaced by heavy professional editing software patterns.
+- **Decision:** Desktop Studio visual direction follows Edit -> Review -> Publish Setup -> Publish / Schedule.
+- **Consequences:** Video Studio and Image Studio should remain creator-first, preview-forward, publishing-connected, and avoid Premiere/DaVinci/CapCut Desktop/Figma-like complexity as default.
+
+## ADR-036: Mobile Studio is first-class
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Mobile must support real operational and creative utility, not only monitoring.
+- **Decision:** Mobile Studio is a first-class experience supporting edit, post, schedule, and monitor with large preview, simple horizontal tools, bottom sheets, and touch-first workflow.
+- **Consequences:** Future Mobile UX and UI should not reduce creation to passive monitoring or force Desktop editor patterns into Mobile.
+
+## ADR-037: Command Center uses premium operational dashboard direction
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Home must be operational and premium without becoming promotional dashboard theater.
+- **Decision:** Command Center visual direction is modular, premium, operational, and inspired by Brex/Ramp quality for sections such as Attention, Today, Performance, and Opportunities.
+- **Consequences:** Future Home visuals should use elegant operational cards and action-oriented modules, not giant decorative metrics or generic SaaS dashboard patterns.

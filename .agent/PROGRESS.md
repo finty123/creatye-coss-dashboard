@@ -4,6 +4,8 @@ Reverse-chronological record of completed work.
 
 | Date | Agent | Summary | Evidence |
 | ---- | ----- | ------- | -------- |
+| 2026-09-18 | codex | Completed M004.5 - Visual Design Calibration and verified it without frontend implementation or technical architecture. | `docs/design/calibration/`, `docs/project/CONTEXT_INDEX.md`, `jaxx doctor`, `jaxx verify`, `git diff --check`, `git status` |
+| 2026-09-18 | codex | Started M004.5 - Visual Design Calibration; documented approved reference board, visual direction, calibration surfaces, Studio directions, dashboard/data/analytics/control direction, context index entries, and visual ADRs. | `docs/design/calibration/`, `docs/project/CONTEXT_INDEX.md`, `.agent/DECISIONS.md` |
 | 2026-09-18 | codex | Completed M004 - Mobile WebApp UX Architecture and verified it without frontend implementation or technical architecture. | `docs/ux/mobile/`, `docs/project/CONTEXT_INDEX.md`, `jaxx doctor`, `jaxx verify`, `git diff --check`, `git status` |
 | 2026-09-18 | codex | Started M004 - Mobile WebApp UX Architecture; formalized mobile navigation, shell, page context, quick creation, publishing, activity, automation, analytics, patterns, states, capability matrix, workflows, and Mobile ADRs. | `docs/ux/mobile/`, `docs/project/CONTEXT_INDEX.md`, `.agent/DECISIONS.md` |
 | 2026-09-18 | codex | Completed M003 - Web UX Architecture and verified it without frontend implementation or technical architecture. | `docs/ux/web/`, `docs/project/CONTEXT_INDEX.md`, `jaxx doctor`, `jaxx verify`, `git diff --check`, `git status` |

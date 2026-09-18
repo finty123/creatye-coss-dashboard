@@ -56,8 +56,14 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
 
 ### M004.5 - Visual Design Calibration
-- [ ] Calibrate visual design direction after Mobile UX Architecture.
-- [ ] Do not start until explicitly requested.
+- [x] Formalize approved visual direction and reference board.
+- [x] Document visual lock for sidebar, command center, data UI, studio, mobile, analytics, typography, and controls.
+- [x] Document calibration surfaces.
+- [x] Document Desktop Studio and Mobile Studio calibration direction.
+- [x] Document dashboard, data UI, analytics, and control finishing direction.
+- [x] Update context index for M004.5 documents.
+- [x] Register major visual calibration ADRs in `.agent/DECISIONS.md`.
+- [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
 
 ### M005 - Technical Stack
 - [ ] Decide the technical stack.

@@ -146,3 +146,26 @@ Use this index to discover relevant project documentation without loading everyt
 - Mobile visual task -> `MOBILE_UX_SPEC`, `docs/design/PLATFORM_DESIGN.md`, relevant design foundation.
 - Mobile state/offline task -> `MOBILE_UX_SPEC`, `SYSTEM_STATES`, `MOBILE_PATTERNS`.
 - Desktop-to-Mobile translation task -> `MOBILE_UX_SPEC`, `MOBILE_PATTERNS`, relevant Web UX and Design System docs.
+
+## Visual Calibration
+
+- `docs/design/calibration/VISUAL_CALIBRATION_SPEC.md` - start here for any visual calibration, visual lock, reference alignment, or implementation-prep visual task.
+- `docs/design/calibration/VISUAL_DIRECTION.md` - load for visual personality, current Creatye preservation, brand posture, color/type/control/card/studio/mobile/analytics direction.
+- `docs/design/calibration/REFERENCE_BOARD.md` - load when checking approved references, what to borrow, and what not to copy.
+- `docs/design/calibration/CALIBRATION_SURFACES.md` - load when preparing or reviewing calibration surfaces.
+- `docs/design/calibration/DESKTOP_STUDIO_DIRECTION.md` - load for Desktop Studio visual flow, Edit/Review/Publish Setup/Publish-Schedule journey, and Studio complexity guardrails.
+- `docs/design/calibration/MOBILE_STUDIO_DIRECTION.md` - load for Mobile Studio as a first-class creation experience.
+- `docs/design/calibration/DASHBOARD_DIRECTION.md` - load for Command Center visual direction.
+- `docs/design/calibration/DATA_UI_DIRECTION.md` - load for card/list-first operational data UI.
+- `docs/design/calibration/ANALYTICS_DIRECTION.md` - load for social/content-first analytics visuals.
+- `docs/design/calibration/CONTROL_FINISHING.md` - load for typography, controls, buttons, inputs, tabs, dropdowns, and component finishing.
+
+## M004.5 visual calibration loading guide
+
+- Command Center visual task -> `VISUAL_CALIBRATION_SPEC`, `DASHBOARD_DIRECTION`, relevant design foundation docs.
+- Desktop Studio task -> `VISUAL_CALIBRATION_SPEC`, `DESKTOP_STUDIO_DIRECTION`, `docs/ux/web/WEB_UX_SPEC.md`, relevant product docs.
+- Mobile Studio task -> `VISUAL_CALIBRATION_SPEC`, `MOBILE_STUDIO_DIRECTION`, `docs/ux/mobile/MOBILE_UX_SPEC.md`, relevant product docs.
+- Data UI task -> `VISUAL_CALIBRATION_SPEC`, `DATA_UI_DIRECTION`, relevant Web/Mobile UX docs.
+- Analytics visual task -> `VISUAL_CALIBRATION_SPEC`, `ANALYTICS_DIRECTION`, relevant product and design docs.
+- Controls/typography task -> `VISUAL_CALIBRATION_SPEC`, `CONTROL_FINISHING`, `docs/design/TYPOGRAPHY.md`, relevant component taxonomy.
+- Reference check -> `VISUAL_CALIBRATION_SPEC`, `REFERENCE_BOARD`, then the relevant specialized calibration doc.
