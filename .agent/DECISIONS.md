@@ -78,3 +78,94 @@ Format: lightweight ADRs.
 - **Context:** Terms such as Media, Asset, Project, Content, Variant, Output, Video, Image, and Template can overlap without clear ownership.
 - **Decision:** Media and Asset belong to content inventory, Project/Video/Image/Render belong to creative production, Content/Variant/Output describe publishable material, and Template is a reusable structure across creative/content/automation contexts.
 - **Consequences:** Future code, UX, and documentation should use the product glossary before introducing new terms.
+
+## ADR-012: Design system uses a four-level token architecture
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Creatye Studio needs visual consistency across dense operational software, creative editors, analytics, automation, publishing, and mobile workflows.
+- **Decision:** The design system uses primitive, semantic, component, and product/domain tokens.
+- **Consequences:** Future UI work must avoid arbitrary values and must introduce product/domain tokens only when stable product meaning requires them.
+
+## ADR-013: Light and dark themes use semantic color
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** The product needs light and dark themes without hard-coding colors into components.
+- **Decision:** Color is defined through semantic roles for canvas, surfaces, text, borders, actions, status, data visualization, and domain accents.
+- **Consequences:** Components should consume semantic or component tokens, not raw color primitives.
+
+## ADR-014: Desktop and Mobile share foundations but diverge in experience design
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** M001 established Desktop Web and Mobile WebApp as distinct experiences.
+- **Decision:** M002 keeps shared brand language, core tokens, typography principles, color semantics, iconography, status language, and accessibility, while allowing platform-specific density, navigation, layout, tables, editors, sheets, quick actions, and touch behavior.
+- **Consequences:** Mobile must not be implemented as compressed desktop in future UX milestones.
+
+## ADR-015: Density is a first-class design-system foundation
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Creatye Studio must support operational tables, editors, media libraries, analytics, publishing, and management interfaces without confusing premium quality with empty space.
+- **Decision:** The design system defines Comfortable, Standard, and Compact density levels.
+- **Consequences:** Desktop should primarily use Standard and Compact; Mobile should use touch-appropriate Comfortable or mobile-tuned Standard.
+
+## ADR-016: Design governance prevents future visual drift
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Future implementation will need many surfaces and specialized patterns across product domains.
+- **Decision:** Before creating new components, teams must check existing components, patterns, tokens, platform needs, and domain needs.
+- **Consequences:** Arbitrary color, spacing, radius, shadow, motion, icon families, duplicate components, and decorative components require explicit justification.
+
+## ADR-017: Desktop primary navigation model is fixed for M003
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** The Web Desktop UX architecture was approved outside Codex and must be formalized without redesign.
+- **Decision:** The official primary navigation is Home, Pages, Content, Automations, Publishing, Analytics, and Settings.
+- **Consequences:** Video Studio, Image Studio, Templates, Calendar, Media, AI, Notifications, and other capabilities do not become primary sidebar items by default.
+
+## ADR-018: Content is the parent area for creative work
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Video Studio, Image Studio, Templates, Library, Media, Assets, Projects, Variants, and Outputs can feel like separate products if exposed as peer applications.
+- **Decision:** Content is the parent area for Library, Video Studio, Image Studio, and Templates.
+- **Consequences:** Creative work should feel integrated with Content Library and Publishing rather than isolated export/download tools.
+
+## ADR-019: Publishing is one integrated operational area
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Calendar, scheduler, queue, and published content can drift into separate products.
+- **Decision:** Publishing remains one integrated area. Calendar and List are views; Queue is an operational state; Published is a status/filter.
+- **Consequences:** Future UX should not create separate primary products for Calendar, Scheduler, Queue, or Published.
+
+## ADR-020: Page is a reusable operational context
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Pages are central to the operation and connect Content, Publishing, Automations, and Analytics.
+- **Decision:** Page context can be preserved into related operations, such as creating an automation or publication from Page Detail.
+- **Consequences:** Entering work from a Page should keep Page scope visible and actionable.
+
+## ADR-021: Cross-domain context preservation is required
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Creatye Studio should feel like one integrated operation rather than disconnected tools.
+- **Decision:** Cross-domain flows must preserve meaningful context across Content, Studios, Publishing, Analytics, Pages, Automations, Templates, and failure recovery.
+- **Consequences:** Future UX and implementation should avoid forcing users to reconstruct context after navigation.
+
+## ADR-022: Narrow Desktop remains Desktop
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** The Desktop experience must remain usable in narrow windows, including approximately half of an ultrawide monitor.
+- **Decision:** Narrow Desktop remains a desktop mode, not Mobile WebApp. Sidebar, inspectors, filters, tables, and editors adapt while preserving desktop workflows.
+- **Consequences:** Future responsive UX should not swap to mobile navigation or mobile interaction patterns by default.
+
+## ADR-023: AI is a transversal Web UX layer
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** AI appears across Content, Studios, Automation, Publishing, and Analytics but should not become a generic AI product.
+- **Decision:** AI is a transversal UX layer, not a required primary navigation area.
+- **Consequences:** AI entry points should be contextual, user-controlled, explainable, and aligned with M002 AI experience rules.
+
+## ADR-024: Editors share shell principles
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** Video Studio, Image Studio, and Flow Builder need different workflows but should remain cognitively consistent.
+- **Decision:** Editors share shell principles around top context/actions, primary work area/canvas, optional left source/tool panel, right inspector, selection, zoom, undo/redo, and status.
+- **Consequences:** Future editor UX can specialize by domain while preserving shared interaction expectations.
