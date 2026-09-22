@@ -342,3 +342,20 @@ Duplicate workspace selector removed. Web typecheck and production build pass.
 - `2026-09-22T22:29:43.879Z` [INFO] Removed the duplicated Creatye Studio workspace selector from the sidebar, retaining the Samuel Cruz profile and navigation separation.
 
 ---
+## Session session-2026-09-22T23-02-46-766Z
+
+- **Agent:** codex
+- **Started:** 2026-09-22T23:02:46.816Z
+- **Closed:** 2026-09-22T23:03:25.503Z
+- **Duration:** 0.6 min
+- **Events:** 1 (INFO:1)
+
+### Outcome
+
+Moved theme selection to the top actions flyout, linked sidebar Settings to /design-system, and validated 27 responsive visual cases plus the full repository verify suite.
+
+### Activity
+
+- `2026-09-22T23:02:56.307Z` [INFO] Moved theme preference to the top-right actions menu with a lateral System/Light/Dark submenu, restored Settings as a /design-system sidebar link, and expanded visual regression coverage to 27 cases.
+
+---

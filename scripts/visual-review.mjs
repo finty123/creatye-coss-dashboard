@@ -23,6 +23,7 @@ const surfaces = [
 ];
 const cases = surfaces.flatMap((surface) => viewports.map((viewport) => ({ ...surface, ...viewport, name: `${surface.group}-${viewport.name}` })));
 cases.push(
+  { group: "dashboard", name: "dashboard-actions-menu-reference-1287", path: "/", width: 1287, height: 913, actionsMenu: true },
   { group: "design-system", name: "design-system-light-1440", path: "/design-system", width: 1440, height: 1000 },
   { group: "design-system", name: "design-system-dark-1440", path: "/design-system", width: 1440, height: 1000, dark: true }
 );
@@ -35,11 +36,15 @@ for (const testCase of cases) {
   const page = await browser.newPage({ viewport: { width: testCase.width, height: testCase.height } });
   await page.goto(`${baseUrl}${testCase.path}`, { waitUntil: "networkidle", timeout: 60_000 });
   await page.waitForFunction(() => Array.from(document.images).every((item) => item.complete), undefined, { timeout: 60_000 });
-  if (testCase.dark) {
-    const settings = page.getByRole("button", { name: "Settings" });
-    if (await settings.count()) await settings.first().click();
-    const dark = page.getByRole("menuitemradio", { name: "Dark" });
-    if (await dark.count()) await dark.click();
+  if (testCase.dark || testCase.actionsMenu) {
+    const more = page.getByRole("button", { name: "More options" });
+    if (await more.count()) await more.first().click();
+    const themeMenu = page.getByRole("menuitem", { name: "Theme" });
+    if (await themeMenu.count()) await themeMenu.click();
+    if (testCase.dark) {
+      const dark = page.getByRole("menuitemradio", { name: "Dark" });
+      if (await dark.count()) await dark.click();
+    }
     await page.waitForTimeout(200);
   }
   const focusSequence = [];
