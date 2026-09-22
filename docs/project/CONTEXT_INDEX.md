@@ -205,3 +205,28 @@ Use this index to discover relevant project documentation without loading everyt
 - Worker/queue task -> `RUNTIME_TOPOLOGY`, `OBSERVABILITY_RELIABILITY`, relevant workload architecture doc.
 - Repository setup task -> `REPOSITORY_STRUCTURE`, `APPLICATION_ARCHITECTURE`, `DOMAIN_BOUNDARIES`.
 - Legacy review task -> `LEGACY_TECHNICAL_MAPPING`, then the relevant architecture doc.
+
+## Implementation
+
+- `docs/design-system/luma-reference-audit.md` - sanitized read-only structural audit that separates observed facts, approximate values, Creatye adaptations, and non-copy boundaries.
+- `docs/design-system/creatye-canvas.md` - implemented Creatye Canvas direction, semantic token contract, foundations, component inventory, calibration routes, and guardrails.
+- `docs/design-system/responsiveness.md` - responsive behavior and evidence for 390, 768, 1100, 1440, and 1920 px.
+- `docs/implementation/M006_IMPLEMENTATION_GUIDE.md` - start here for M006 repository structure, commands, design-system implementation locations, routes, responsive strategy, light/dark strategy, and future UI governance.
+- `docs/design/reviews/M006_VISUAL_PARITY_AUDIT.md` - per-reference audit of all 31 local visual specifications and the required M006 corrections.
+- `docs/design/reviews/M006_FINAL_VISUAL_PARITY.md` - final surface-to-reference mapping, concrete parity evidence, screenshot inventory, and remaining fixture-level differences.
+- `apps/web/` - Next.js App Router foundation, shells, design-system playground, and visual calibration routes.
+- `apps/worker/` - buildable TypeScript worker foundation.
+- `packages/ui/` - implemented tokens, CSS, and reusable UI components.
+- `packages/shared/`, `packages/domain/`, `packages/observability/` - shared primitives, domain vocabulary, and logging foundation.
+- Future packages from M005 such as `db`, `integrations`, `queue`, `media`, `analytics`, and `ai` should be created only when their first real implementation lands.
+
+## M006 implementation loading guide
+
+- UI component task -> `docs/implementation/M006_IMPLEMENTATION_GUIDE.md`, `packages/ui/`, `docs/design/DESIGN_SYSTEM_SPEC.md`, `docs/design/calibration/VISUAL_CALIBRATION_SPEC.md`.
+- Design token task -> `packages/ui/src/styles.css`, `docs/design/TOKEN_ARCHITECTURE.md`, `docs/design/COLOR_SYSTEM.md`, `docs/design/TYPOGRAPHY.md`, `docs/design/SHAPE_ELEVATION.md`.
+- Desktop shell task -> `apps/web/src/components/desktop-shell.tsx`, `docs/ux/web/APPLICATION_SHELL.md`, `docs/ux/web/NAVIGATION.md`, `docs/design/calibration/VISUAL_DIRECTION.md`.
+- Mobile shell task -> `apps/web/src/components/mobile-shell.tsx`, `docs/ux/mobile/APPLICATION_SHELL.md`, `docs/ux/mobile/NAVIGATION.md`, `docs/design/references/06-mobile/`.
+- Studio UI task -> `apps/web/src/components/screens/desktop-studio-calibration.tsx`, `apps/web/src/components/screens/mobile-calibration.tsx`, `docs/design/references/04-studio/`, `docs/design/calibration/DESKTOP_STUDIO_DIRECTION.md`, `docs/design/calibration/MOBILE_STUDIO_DIRECTION.md`.
+- Command Center task -> `apps/web/src/components/screens/command-center.tsx`, `docs/design/calibration/DASHBOARD_DIRECTION.md`, `docs/design/references/02-command-center/`.
+- Data UI / Automations task -> `apps/web/src/components/screens/automations-calibration.tsx`, `docs/design/calibration/DATA_UI_DIRECTION.md`, `docs/design/references/03-data-ui/`.
+- Visual review task -> `docs/design/reviews/M006_VISUAL_PARITY_AUDIT.md`, `scripts/visual-review.mjs`, then inspect final screenshots in `.agent/tmp/m006-definitive-visual/` and record parity in `docs/design/reviews/M006_FINAL_VISUAL_PARITY.md`.
