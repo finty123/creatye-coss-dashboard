@@ -274,3 +274,20 @@ Added root Vercel configuration for @creatye/web. The configured build completed
 - `2026-09-22T18:11:59.677Z` [INFO] Fixing Vercel monorepo deployment by declaring the Next.js workspace build and its actual output directory.
 
 ---
+## Session session-2026-09-22T18-18-12-413Z
+
+- **Agent:** codex
+- **Started:** 2026-09-22T18:18:12.464Z
+- **Closed:** 2026-09-22T18:18:29.880Z
+- **Duration:** 0.3 min
+- **Events:** 1 (INFO:1)
+
+### Outcome
+
+Verified from deleted build artifacts: npm run build compiles internal packages, the Next.js app, and apps/web/.next/routes-manifest.json successfully.
+
+### Activity
+
+- `2026-09-22T18:18:13.024Z` [INFO] Adjusted the Vercel build to compile all workspaces before the Next.js app so internal packages resolve on a clean runner.
+
+---
