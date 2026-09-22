@@ -35,7 +35,6 @@ export function DesktopShell({ active, children }: { active: string; mode?: "sta
   const sidebar = <Sidebar className="luma-sidebar" footer={<div className="creatye-usage"><div><span>Monthly usage</span><strong>68%</strong></div><i><b /></i><small>32 hours remaining</small></div>}>
     <button className="luma-account" type="button"><span className="luma-avatar">SC</span><strong>Samuel Cruz</strong><ChevronDown size={14} strokeWidth={1.6} /></button>
     <div className="luma-sidebar-divider" />
-    <button className="luma-workspace" type="button"><span>C</span><strong>Creatye Studio</strong><ChevronDown size={14} strokeWidth={1.6} /></button>
     <SidebarSection label="Workspace">{navigation.map((item) => <NavigationLink key={item.label} {...item} active={active} />)}</SidebarSection>
     <SidebarSection label="Manage"><ThemeSettingsMenu /><Link href="#help" className="cr-sidebar-item"><CircleHelp size={15} strokeWidth={1.65} /><span>Help & feedback</span></Link></SidebarSection>
   </Sidebar>;

@@ -325,3 +325,20 @@ Creatye sidebar and persistent appearance menu complete. npm run verify passes; 
 - `2026-09-22T22:24:00.448Z` [INFO] Restored Creatye product navigation while retaining the Luma-calibrated visual shell; moved Light/Dark/System appearance control into the Settings dropdown and refined global neutral tones.
 
 ---
+## Session session-2026-09-22T22-29-43-476Z
+
+- **Agent:** codex
+- **Started:** 2026-09-22T22:29:43.493Z
+- **Closed:** 2026-09-22T22:29:50.025Z
+- **Duration:** 0.1 min
+- **Events:** 1 (INFO:1)
+
+### Outcome
+
+Duplicate workspace selector removed. Web typecheck and production build pass.
+
+### Activity
+
+- `2026-09-22T22:29:43.879Z` [INFO] Removed the duplicated Creatye Studio workspace selector from the sidebar, retaining the Samuel Cruz profile and navigation separation.
+
+---
