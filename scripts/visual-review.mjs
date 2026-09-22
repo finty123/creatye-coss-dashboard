@@ -11,11 +11,13 @@ const viewports = [
   { name: "mobile-390", width: 390, height: 844 },
   { name: "tablet-768", width: 768, height: 900 },
   { name: "halfwide-1100", width: 1100, height: 900 },
+  { name: "reference-1287", width: 1287, height: 913 },
   { name: "desktop-1440", width: 1440, height: 1000 },
   { name: "ultrawide-1920", width: 1920, height: 900 }
 ];
 const surfaces = [
   { group: "dashboard", path: "/" },
+  { group: "automations", path: "/automations" },
   { group: "templates", path: "/templates" },
   { group: "studio", path: "/studio?step=customize" }
 ];
@@ -25,7 +27,7 @@ cases.push(
   { group: "design-system", name: "design-system-dark-1440", path: "/design-system", width: 1440, height: 1000, dark: true }
 );
 
-for (const group of ["dashboard", "templates", "studio", "design-system"]) await mkdir(`${outputRoot}/${group}`, { recursive: true });
+for (const group of ["dashboard", "automations", "templates", "studio", "design-system"]) await mkdir(`${outputRoot}/${group}`, { recursive: true });
 
 const browser = await chromium.launch();
 const results = [];
@@ -60,9 +62,12 @@ for (const testCase of cases) {
     };
   });
   const file = `${outputRoot}/${testCase.group}/${testCase.name}.png`;
+  await page.evaluate(() => document.activeElement?.blur());
   await page.screenshot({ path: file, fullPage: true });
   results.push({ ...testCase, file, focusSequence, ...diagnostics });
   await page.close();
 }
 await browser.close();
-console.log(JSON.stringify(results, null, 2));
+const failures = results.filter((result) => result.horizontalOverflow !== 0 || result.bodyOverflow !== 0 || result.blankImages !== 0 || !result.focusVisible);
+console.log(JSON.stringify({ baseUrl, cases: results.length, passed: results.length - failures.length, failures }, null, 2));
+if (failures.length) process.exitCode = 1;

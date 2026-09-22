@@ -291,3 +291,20 @@ Verified from deleted build artifacts: npm run build compiles internal packages,
 - `2026-09-22T18:18:13.024Z` [INFO] Adjusted the Vercel build to compile all workspaces before the Next.js app so internal packages resolve on a clean runner.
 
 ---
+## Session session-2026-09-22T19-02-16-175Z
+
+- **Agent:** codex
+- **Started:** 2026-09-22T19:02:16.198Z
+- **Closed:** 2026-09-22T19:02:27.088Z
+- **Duration:** 0.2 min
+- **Events:** 1 (INFO:1)
+
+### Outcome
+
+Visual recalibration complete. npm run verify passes; 26 visual cases pass with exact reference viewport coverage, no overflow, no broken images, and visible focus.
+
+### Activity
+
+- `2026-09-22T19:02:16.591Z` [INFO] Recalibrated the Creatye shell and home canvas against the supplied 1287x913 Luma reference: navigation, typography, gradient, composer, board cards, controls, and responsive hierarchy.
+
+---
