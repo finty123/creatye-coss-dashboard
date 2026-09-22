@@ -257,3 +257,20 @@ Complete local project snapshot reviewed for publication; environment files rema
 - `2026-09-22T18:02:00.933Z` [INFO] Preparing a complete repository snapshot for the user-authorized replacement of GitHub main.
 
 ---
+## Session session-2026-09-22T18-11-59-241Z
+
+- **Agent:** codex
+- **Started:** 2026-09-22T18:11:59.258Z
+- **Closed:** 2026-09-22T18:12:10.560Z
+- **Duration:** 0.2 min
+- **Events:** 1 (INFO:1)
+
+### Outcome
+
+Added root Vercel configuration for @creatye/web. The configured build completed and generated apps/web/.next/routes-manifest.json.
+
+### Activity
+
+- `2026-09-22T18:11:59.677Z` [INFO] Fixing Vercel monorepo deployment by declaring the Next.js workspace build and its actual output directory.
+
+---
