@@ -36,8 +36,10 @@ for (const testCase of cases) {
   await page.goto(`${baseUrl}${testCase.path}`, { waitUntil: "networkidle", timeout: 60_000 });
   await page.waitForFunction(() => Array.from(document.images).every((item) => item.complete), undefined, { timeout: 60_000 });
   if (testCase.dark) {
-    const toggle = page.getByRole("button", { name: /dark mode/i });
-    if (await toggle.count()) await toggle.first().click();
+    const settings = page.getByRole("button", { name: "Settings" });
+    if (await settings.count()) await settings.first().click();
+    const dark = page.getByRole("menuitemradio", { name: "Dark" });
+    if (await dark.count()) await dark.click();
     await page.waitForTimeout(200);
   }
   const focusSequence = [];

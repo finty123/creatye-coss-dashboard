@@ -88,12 +88,27 @@
 /* Luma-calibrated spatial shell ------------------------------------------------ */
 .luma-shell.cr-app-shell {
   --cr-sidebar-width: 200px;
+  --cr-background: #dedede;
+  --cr-canvas: #dedede;
+  --cr-navigation: #f1f1f1;
+  --cr-surface: #f5f5f5;
+  --cr-surface-raised: #f8f8f8;
+  --cr-surface-muted: #e9e9e9;
+  --cr-surface-selected: #d2d2d2;
+  --cr-surface-hover: #dfdfdf;
+  --cr-surface-interactive: #e2e2e2;
+  --cr-foreground: #1d1d1d;
+  --cr-text-primary: #1d1d1d;
+  --cr-text-secondary: #555;
+  --cr-text-muted: #777;
+  --cr-border: rgba(0, 0, 0, .09);
+  --cr-border-strong: rgba(0, 0, 0, .16);
   min-height: 100dvh;
   grid-template-columns: 200px minmax(0, 1fr);
   gap: 0;
   padding: 13px 0 13px 5px;
   background:
-    radial-gradient(ellipse 42% 31% at 59% 18%, rgba(183, 209, 250, .88) 0%, rgba(201, 219, 247, .54) 36%, rgba(222, 222, 222, 0) 76%),
+    radial-gradient(ellipse 42% 31% at 59% 18%, rgba(187, 208, 242, .76) 0%, rgba(203, 218, 241, .46) 36%, rgba(222, 222, 222, 0) 76%),
     #dedede;
   color: #181818;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -112,13 +127,15 @@
   height: calc(100dvh - 26px);
   border: 0;
   border-radius: 23px;
-  background: rgba(247, 247, 247, .82);
+  background: rgba(244, 244, 244, .82);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .62);
   backdrop-filter: blur(20px);
 }
 .luma-sidebar .cr-sidebar__content { padding: 8px; }
 .luma-sidebar .cr-sidebar__footer { padding: 8px 10px 10px; border: 0; }
 .luma-sidebar .cr-sidebar-section { gap: 1px; margin-top: 4px; }
+.luma-sidebar .cr-sidebar-section:has(.cr-sidebar-section__label) { margin-top: 13px; }
+.luma-sidebar .cr-sidebar-section__label { padding: 0 10px 6px; color: #8a8a8a; font-size: 9px; letter-spacing: .045em; }
 .luma-sidebar .cr-sidebar-item {
   min-height: 33px;
   grid-template-columns: 19px minmax(0, 1fr);
@@ -186,6 +203,18 @@
   font-size: 11px;
   cursor: pointer;
 }
+.creatye-usage { display: grid; gap: 7px; padding: 4px 3px; }
+.creatye-usage > div { display: flex; justify-content: space-between; color: #4c4c4c; font-size: 10px; }
+.creatye-usage > div strong { font-weight: 560; }
+.creatye-usage > i { height: 4px; overflow: hidden; border-radius: 3px; background: rgba(0,0,0,.09); }
+.creatye-usage > i b { display: block; width: 68%; height: 100%; border-radius: inherit; background: #292929; }
+.creatye-usage small { color: #858585; font-size: 9px; }
+.luma-settings { position: relative; }
+.luma-settings-trigger[aria-expanded="true"] { background: var(--cr-surface-selected); color: var(--cr-text-primary); }
+.luma-settings-menu { display: grid; gap: 2px; margin: 4px 4px 7px; border: 1px solid var(--cr-border); border-radius: 14px; padding: 6px; background: var(--cr-surface-raised); box-shadow: 0 12px 28px rgba(0,0,0,.1); }
+.luma-settings-menu > strong { padding: 5px 7px 4px; color: var(--cr-text-muted); font-size: 9px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.luma-settings-menu button { min-height: 31px; display: grid; grid-template-columns: 18px 1fr 16px; align-items: center; gap: 6px; border: 0; border-radius: 9px; padding: 0 7px; background: transparent; color: var(--cr-text-secondary); text-align: left; font: 11px inherit; cursor: pointer; }
+.luma-settings-menu button:hover,.luma-settings-menu button[aria-checked="true"] { background: var(--cr-surface-hover); color: var(--cr-text-primary); }
 .luma-top-controls {
   position: fixed;
   z-index: var(--cr-z-sticky);
@@ -215,7 +244,7 @@
   grid-template-rows: minmax(0, 1fr) 34px;
   border-radius: 27px;
   padding: 14px 16px 10px 18px;
-  background: rgba(250, 250, 250, .94);
+  background: rgba(248, 248, 248, .96);
   box-shadow: 0 17px 48px rgba(98, 112, 139, .07);
   text-align: left;
 }
@@ -267,10 +296,10 @@
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 .luma-new-board:hover,.luma-board-card:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(0,0,0,.07); }
-.luma-new-board { display: grid; place-content: center; justify-items: center; background: rgba(246,246,246,.72); }
+.luma-new-board { display: grid; place-content: center; justify-items: center; background: rgba(240,240,240,.82); }
 .luma-new-board > span { margin-top: 8px; border: 1px solid rgba(0,0,0,.12); border-radius: 14px; padding: 4px 9px; color: #777; font-size: 10px; }
 .luma-new-board > strong { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-.luma-board-card { display: block; padding: 17px 16px 16px; background: #c9bebe; }
+.luma-board-card { display: block; padding: 17px 16px 16px; background: #c5baba; }
 .luma-board-card header { display: grid; margin-bottom: 16px; }
 .luma-board-card header strong { font-size: 12px; font-weight: 440; letter-spacing: .005em; }
 .luma-board-card header span { margin-top: 2px; color: #4f4b4b; font-size: 12px; }
@@ -304,6 +333,53 @@
   margin: 72px 18px 18px;
   border-radius: 22px;
 }
+
+[data-theme="dark"] .luma-shell.cr-app-shell {
+  --cr-background: #191919;
+  --cr-canvas: #171717;
+  --cr-navigation: #202020;
+  --cr-surface: #252525;
+  --cr-surface-raised: #2b2b2b;
+  --cr-surface-muted: #222;
+  --cr-surface-selected: #3a3a3a;
+  --cr-surface-hover: #323232;
+  --cr-surface-interactive: #353535;
+  --cr-foreground: #ededed;
+  --cr-text-primary: #ededed;
+  --cr-text-secondary: #b9b9b9;
+  --cr-text-muted: #858585;
+  --cr-border: rgba(255,255,255,.08);
+  --cr-border-strong: rgba(255,255,255,.15);
+  background:
+    radial-gradient(ellipse 42% 31% at 59% 18%, rgba(70, 87, 121, .46) 0%, rgba(52, 61, 81, .28) 38%, rgba(23,23,23,0) 76%),
+    #171717;
+  color: #ededed;
+}
+[data-theme="dark"] .luma-sidebar.cr-sidebar { background: rgba(30,30,30,.86); box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); }
+[data-theme="dark"] .luma-sidebar .cr-sidebar-item { color: #bebebe; }
+[data-theme="dark"] .luma-sidebar .cr-sidebar-item:hover { background: rgba(255,255,255,.07); color: #fff; }
+[data-theme="dark"] .luma-sidebar .cr-sidebar-item[aria-current="page"] { background: #3a3a3a; color: #fff; }
+[data-theme="dark"] .luma-account,[data-theme="dark"] .luma-workspace { color: #ededed; }
+[data-theme="dark"] .luma-account:hover,[data-theme="dark"] .luma-workspace:hover { background: rgba(255,255,255,.06); }
+[data-theme="dark"] .luma-workspace > span { background: #303030; color: #eee; }
+[data-theme="dark"] .luma-sidebar-divider { background: rgba(255,255,255,.1); }
+[data-theme="dark"] .creatye-usage > div { color: #c4c4c4; }
+[data-theme="dark"] .creatye-usage > i { background: rgba(255,255,255,.1); }
+[data-theme="dark"] .creatye-usage > i b { background: #e1e1e1; }
+[data-theme="dark"] .luma-top-controls { background: rgba(35,35,35,.78); box-shadow: 0 10px 28px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.04); }
+[data-theme="dark"] .luma-top-controls .cr-icon-button { color: #e8e8e8; }
+[data-theme="dark"] .luma-create h1 { color: #ededed; }
+[data-theme="dark"] .luma-composer { background: rgba(37,37,37,.95); box-shadow: 0 17px 52px rgba(0,0,0,.23); }
+[data-theme="dark"] .luma-composer textarea { color: #ededed; }
+[data-theme="dark"] .luma-composer textarea::placeholder { color: #929292; }
+[data-theme="dark"] .luma-composer footer button { color: #d0d0d0; }
+[data-theme="dark"] .luma-composer footer .luma-send { background: #565656; color: #e9e9e9; }
+[data-theme="dark"] .luma-new-board { background: rgba(38,38,38,.88); color: #d7d7d7; }
+[data-theme="dark"] .luma-new-board > span { border-color: rgba(255,255,255,.13); color: #999; }
+[data-theme="dark"] .luma-board-card { background: #4c4446; color: #eee; }
+[data-theme="dark"] .luma-board-card header span { color: #c2baba; }
+[data-theme="dark"] .luma-shell .automation-overview > div,[data-theme="dark"] .luma-shell .automation-overview > div:first-child,[data-theme="dark"] .luma-shell .automation-card-grid > article { background: rgba(38,38,38,.9); }
+[data-theme="dark"] .luma-shell .automation-header > .cr-button { background: rgba(42,42,42,.9); color: #eee; }
 
 @media (min-width: 721px) and (max-width: 1180px) {
   .luma-shell.cr-app-shell { grid-template-columns: 200px minmax(0,1fr); }

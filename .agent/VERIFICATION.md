@@ -308,3 +308,20 @@ Visual recalibration complete. npm run verify passes; 26 visual cases pass with 
 - `2026-09-22T19:02:16.591Z` [INFO] Recalibrated the Creatye shell and home canvas against the supplied 1287x913 Luma reference: navigation, typography, gradient, composer, board cards, controls, and responsive hierarchy.
 
 ---
+## Session session-2026-09-22T22-24-00-045Z
+
+- **Agent:** codex
+- **Started:** 2026-09-22T22:24:00.081Z
+- **Closed:** 2026-09-22T22:24:13.096Z
+- **Duration:** 0.2 min
+- **Events:** 1 (INFO:1)
+
+### Outcome
+
+Creatye sidebar and persistent appearance menu complete. npm run verify passes; 26 light/dark responsive visual cases pass without overflow, broken images, or invisible focus.
+
+### Activity
+
+- `2026-09-22T22:24:00.448Z` [INFO] Restored Creatye product navigation while retaining the Luma-calibrated visual shell; moved Light/Dark/System appearance control into the Settings dropdown and refined global neutral tones.
+
+---
