@@ -1,20 +1,21 @@
 # State - Creatye Studio
 
 ## Status
-M005_COMPLETE
+M006_AWAITING_PRODUCT_OWNER_VISUAL_APPROVAL
 
 ## Current milestone
-M005 - Technical Architecture
+M006 - Repository Foundation + Design System Implementation
 
 ## Current focus
-M005 Technical Architecture completed: architecture style, system topology, app layers, repository structure, domain/data/auth/security/integration/automation/media/publishing/analytics/AI/observability/deployment/testing/legacy mapping are locked in documentation without product implementation.
+Creatye Canvas is implemented and technically validated after a read-only Luma structural audit. The shared tokens/components, shell, Dashboard, Templates library, Video Studio, design-system route, light/dark themes, and target viewports are documented and awaiting explicit product-owner visual approval. The technical foundation remains preserved and M007 remains unstarted.
 
 ## Last session
-session-2026-09-18T21-39-19-042Z opened by codex
+session-2026-09-18T23-47-27-880Z opened by codex
 
 ## Next steps
-1. Keep native Jaxx files as the source of truth for state, plan, progress, decisions, and verification.
-2. Start M006 - Repository Foundation + Design System Implementation only when explicitly requested.
+1. Obtain explicit product-owner visual approval for the definitive M006 screenshots.
+2. Keep M006 open until that approval is received.
+3. Do not start M007 - Core + Database + Authentication.
 
 ## Blockers
-None.
+Product-owner visual approval is pending.

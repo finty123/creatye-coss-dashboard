@@ -75,8 +75,23 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Verify with `jaxx doctor`, `jaxx verify`, `git diff --check`, and `git status`.
 
 ### M006 - Repository Foundation + Design System Implementation
-- [ ] Create repository foundation.
-- [ ] Begin design system implementation only after M005 is complete and explicitly requested.
+- [x] Create repository foundation.
+- [x] Implement npm workspaces TypeScript monorepo foundation.
+- [x] Create Next.js Web App Router foundation.
+- [x] Create buildable Worker foundation.
+- [x] Implement design tokens and reusable UI components.
+- [x] Implement Desktop shell, Mobile shell, design-system playground, and calibration surfaces.
+- [x] Add M006 implementation guide and context index routing.
+- [x] Verify install, typecheck, lint, build, visual review, Jaxx, diff check, and git status.
+- [x] Implement the product-owner-requested visual remediation while preserving the technical foundation.
+- [x] Generate and inspect the eight required remediation screenshots against the actual Visual Reference Pack.
+- [x] Audit all 31 visual references and map concrete parity requirements before the definitive refactor.
+- [x] Implement the definitive visual refactor across foundations, shell, Command Center, Automations, Desktop Studio, and Mobile Studio.
+- [x] Generate, compare, correct, and inspect definitive screenshots at every required viewport.
+- [ ] Receive explicit product-owner visual approval.
+
+### M007 - Core + Database + Authentication
+- [ ] Begin only when explicitly requested.
 
 ## Working agreements
 - One feature = one branch = one agent.

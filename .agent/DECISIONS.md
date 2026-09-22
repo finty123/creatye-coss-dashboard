@@ -351,3 +351,38 @@ Format: lightweight ADRs.
 - **Context:** AI is transversal and must not bind product logic directly to one provider.
 - **Decision:** Use an AI provider abstraction with server-side credentials, prompt/model governance, usage/cost metadata, error normalization, and async execution when appropriate.
 - **Consequences:** Do not build unnecessary autonomous-agent architecture or expose provider internals to UI.
+
+## ADR-051: M006 uses npm workspaces for the TypeScript monorepo
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** M005 left the package manager open and the local environment has Node/npm available without pnpm.
+- **Decision:** Use npm workspaces for the initial monorepo foundation.
+- **Consequences:** `package-lock.json` is part of the reproducible foundation; future package-manager changes require an explicit migration decision.
+
+## ADR-052: Implemented UI foundation lives in `packages/ui`
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** M006 requires real design tokens and reusable components without scattering arbitrary values through product screens.
+- **Decision:** Put CSS tokens, component contracts, and reusable primitives in `packages/ui`.
+- **Consequences:** Future Web UI must check `packages/ui` before introducing local components or styles.
+
+## ADR-053: M006 calibration routes use typed fixtures only
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** M006 must validate visual language without implementing backend features.
+- **Decision:** Use isolated typed fixture data inside `apps/web/src/lib/fixtures.ts`.
+- **Consequences:** Fixture data must not become fake repositories or future production service logic.
+
+## ADR-054: Visual review is part of the M006 verification gate
+- **Date:** 2026-09-18
+- **Status:** accepted
+- **Context:** M006 cannot pass on compile-only validation because visual coherence is an explicit requirement.
+- **Decision:** Add Playwright-based visual review through `npm run visual:review`.
+- **Consequences:** Screenshots are generated under `.agent/tmp/m006-visual/` for review and remain outside version control.
+
+## ADR-055: Creatye Canvas is the M006 structural visual system
+- **Date:** 2026-09-22
+- **Status:** accepted
+- **Context:** The product owner requested a new original design system informed by a read-only structural audit of Luma while prohibiting copying of proprietary identity, copy, assets, or implementation.
+- **Decision:** Adopt Creatye Canvas: a warm spatial shell, light floating surfaces, neutral selection, black primary actions, semantic color, restrained AI atmosphere, Geist typography, a full desktop sidebar, an intermediate icon rail, and a dedicated mobile composition.
+- **Consequences:** Future calibration and UI implementation must consume the shared semantic tokens/components, retain the documented non-copy boundary, and validate Dashboard, Templates, and Studio before broader screen migration.

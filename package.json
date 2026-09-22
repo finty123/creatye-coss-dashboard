@@ -1,0 +1,26 @@
+{
+  "name": "creatye-studio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @creatye/web",
+    "start:web": "npm run start -w @creatye/web",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run build --workspaces --if-present && npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "visual:review": "node scripts/visual-review.mjs",
+    "verify": "npm run typecheck && npm run lint && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.63.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

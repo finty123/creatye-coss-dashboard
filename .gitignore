@@ -6,3 +6,18 @@
 .agent/quality/
 .agent/tmp/
 .agent/sessions/
+
+# Node / TypeScript
+node_modules/
+*.tsbuildinfo
+
+# Builds
+dist/
+.next/
+out/
+coverage/
+
+# Local environment
+.env
+.env.*
+!.env.example

@@ -30,7 +30,17 @@ const config = {
     enabled: true,
     maxComplexity: 10,
     maxDuplicationRatio: 0.05,
-    exclude: ["**/*.test.ts", "**/*.spec.ts"],
+    exclude: [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      "docs/design/references/**",
+      "**/.next/**",
+      "**/dist/**",
+      "**/node_modules/**",
+      "package-lock.json",
+      "**/package.json",
+      "**/tsconfig.json"
+    ],
   },
 } satisfies FrameConfig;
 
