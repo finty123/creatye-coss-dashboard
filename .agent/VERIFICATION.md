@@ -432,3 +432,30 @@ Completed authenticated Luma structural calibration without account mutations: c
 - `2026-09-23T19:50:25.007Z` [DONE] Authenticated Luma calibration complete: 85/85 visual scenarios passed across 390, 768, 1100, 1440, and 1920 px; typecheck, lint, and production build passed.
 
 ---
+## Session session-2026-09-23T21-52-49-745Z
+
+- **Agent:** codex
+- **Started:** 2026-09-23T21:52:49.817Z
+- **Closed:** 2026-09-23T22:39:07.816Z
+- **Duration:** 46.3 min
+- **Events:** 2 (INFO:2)
+
+### Activity
+
+- `2026-09-23T21:52:50.399Z` [INFO] Iniciando recalibração visual solicitada: tokens Luma, busca contextual/global, alinhamentos, dashboard, tabelas e navegação Publishing.
+- `2026-09-23T22:36:53.074Z` [INFO] Applied owner profile avatar, moved desktop route actions below utility chrome, standardized 36px action controls, and validated light/dark layouts.
+
+---
+## Session session-2026-09-23T22-41-55-447Z
+
+- **Agent:** codex
+- **Started:** 2026-09-23T22:41:55.458Z
+- **Closed:** 2026-09-23T22:42:19.144Z
+- **Duration:** 0.4 min
+- **Events:** 1 (INFO:1)
+
+### Activity
+
+- `2026-09-23T22:41:58.934Z` [INFO] Refactored shell search overlays to satisfy complexity gate and revalidated contextual/global search interactions.
+
+---

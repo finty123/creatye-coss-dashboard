@@ -33,7 +33,7 @@ Mobile must not be treated as compressed Desktop.
 
 ## Calibrated visual contract
 
-- The shell is a quiet spatial canvas. Ambient color is allowed only as one subdued cue around the AI composer, never as page-wide promotional chrome.
+- The shell is a quiet spatial canvas. One soft blue ambient wash may support the AI composer and the compact contextual top of product routes; it must remain behind content and never become promotional chrome.
 - Desktop navigation occupies a 224 px layout track containing a 200 px inset surface. Navigation rows are 32 px high, use 12 px labels, 15-16 px outline icons, an 8 px gap, and neutral 6-10% hover/selected fills.
 - Between 721 and 1180 px the sidebar becomes a labeled-by-tooltip 68 px rail. At 720 px and below, the dedicated mobile shell/navigation applies.
 - Standard product pages use a compact contextual top: a 15-16 px title and nearby actions. Do not reintroduce the `eyebrow + oversized title + explanatory paragraph` Page Hero Header pattern.
@@ -45,12 +45,15 @@ Mobile must not be treated as compressed Desktop.
 - Generation/configuration panels have stable internal scrolling, visible-but-quiet 6 px scrollbars, sticky critical actions when the panel is viewport-bound, and no document-level overflow.
 - Steppers show current, completed, and upcoming states with a compact pill, numbered/check markers, and connectors; they remain horizontally scrollable when necessary.
 - Icons come from Lucide, normally use a 1.65-1.7 stroke, and use 15-16 px for navigation/compact controls. Filled icons are reserved for selected or semantic states.
-- Light and dark modes remap the same roles. Light centers on warm grays and soft whites; dark centers on `#141414`, `#202020`, `#222222`, and `#282828` roles with 5-10% reverse borders.
+- Light and dark modes remap the same roles. The calibrated light foundation is `#dfdfdf`, `#eeeeee`, `#ebebeb`, and `#f6f6f6`; dark uses `#141414`, `#202020`, `#222222`, `#282828`, and `#313131`, with 5-10% reverse borders.
 - Common transitions stay between 100 and 200 ms; media transforms may use 300 ms. Focus is a narrow ring/inset edge, disabled controls preserve geometry and lower opacity, and loading states preserve layout.
 
 ## Current product language
 
-- Sidebar keeps Creatye product options: Dashboard, Pages, Automations, Video Studio, Image Studio, Templates, Analytics, Settings, and Help.
+- Sidebar keeps Creatye product options: global Search, Dashboard, Pages, Automations, Video Studio, Image Studio, Templates, Agendamentos, Analytics, Settings, and Help.
+- Search in the top utility pill is contextual to the current route. Search in the sidebar is global. Product pages must not duplicate a persistent inline search field.
+- Desktop route actions use the shared `ProductPage` action row below the fixed utility pill and keep the 36 px control height; do not manually place actions beside the pill.
+- Reuse the shared circular profile image treatment for signed-in account summaries. Initials are fallback-only.
 - Appearance selection lives in the top-right actions menu and supports System, Light, and Dark.
 - Pages may borrow Botcake's scannable organization, but must use Creatye tokens, typography, controls, density, and surfaces.
 - Dark mode remaps the same semantic roles; it is never a separate neon theme.
@@ -73,7 +76,7 @@ Before design work:
 
 - Arbitrary glassmorphism
 - Decorative gradients
-- Glow effects
+- Decorative or stacked glow effects
 - Blobs
 - Neon styling
 - Oversized cards
@@ -81,7 +84,7 @@ Before design work:
 - Heavy shadows
 - Unnecessary components
 - Arbitrary visual values
-- Copying external product identity, wording, assets, exact colors, or exact layouts
+- Copying external product identity, wording, assets, branded palettes, or proprietary layouts
 - Treating historical reference screenshots as a mandatory target
 
 ## Prioritize

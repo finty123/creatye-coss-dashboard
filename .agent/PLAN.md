@@ -119,6 +119,16 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Update the design-system guardian and durable Creatye Canvas contract.
 - [x] Verify typecheck, lint, production build, interactive states, focus, images, and horizontal overflow across 85 rendered scenarios.
 
+### M006.7 - Product-owner visual correction pass
+- [x] Replace pastel-biased foundations with the audited Luma light/dark neutral roles.
+- [x] Increase the Home blue atmosphere by 50% and restore a restrained ambient wash on product routes.
+- [x] Restore the original sparse Home composition and project positioning.
+- [x] Expand product routes to the available work area and align compact titles/actions with the reference shell.
+- [x] Move route search into the top utility pill and provide global Search in the sidebar.
+- [x] Align Pages operational columns and add Agendamentos navigation to `/publishing`.
+- [x] Place route actions below the fixed utility pill, standardize desktop action height, and apply the owner profile avatar.
+- [x] Validate search interactions, theme tokens, typecheck, lint, production build, and 85 responsive visual scenarios.
+
 ## Working agreements
 - One feature = one branch = one agent.
 - Every meaningful action is appended to `AGENT_LOG.jsonl`.

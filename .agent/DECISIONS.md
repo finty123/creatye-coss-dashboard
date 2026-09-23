@@ -403,7 +403,21 @@ Format: lightweight ADRs.
 
 ## ADR-058: Application pages use compact contextual tops
 - **Date:** 2026-09-23
-- **Status:** accepted
+- **Status:** amended by ADR-060
 - **Context:** The authenticated structural audit confirmed that the strongest workspace hierarchy comes from compact context, grouped controls, and surface rhythm rather than a repeated eyebrow, large title, and explanatory paragraph stack.
 - **Decision:** Creatye application routes use a compact 15-16 px contextual title with adjacent actions. Page Hero Headers are not an approved application-shell pattern. AI composer headings and rare product-level display moments remain separate, intentional patterns.
 - **Consequences:** New routes must place explanatory content in the workflow, empty state, help text, or object context where it is actionable. Shared page composition, responsive diagnostics, and design governance enforce the compact pattern.
+
+## ADR-059: Search scope is split between contextual chrome and global navigation
+- **Date:** 2026-09-23
+- **Status:** accepted
+- **Context:** Persistent search inputs repeated across Pages, Templates, Automations, Publishing, and Help added visual noise and competed with route filters, while users still need a system-wide entry point.
+- **Decision:** The search icon in the top utility pill searches objects relevant to the current route. The Search entry in the primary sidebar opens system-wide destination search. Product toolbars keep only filters, sort, views, and route actions.
+- **Consequences:** New searchable routes must register contextual result data with the shell search instead of adding another persistent inline search field. Search overlays must remain keyboard accessible and use the shared overlay z-layer.
+
+## ADR-060: Route actions occupy a dedicated row below utility chrome
+- **Date:** 2026-09-23
+- **Status:** accepted
+- **Context:** Right-aligned route actions competed visually and spatially with the fixed top utility pill when both occupied the same horizontal band.
+- **Decision:** Desktop product headers keep the compact route title in the first row and place route actions in a dedicated 36 px row below the utility chrome. The signed-in profile uses the owner-provided avatar asset in every account summary.
+- **Consequences:** New product routes must use `ProductPage` actions instead of manually positioning controls near the top utility pill. Account surfaces must reuse the shared circular avatar treatment.

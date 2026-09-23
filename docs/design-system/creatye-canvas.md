@@ -4,13 +4,13 @@ Creatye Canvas is the implemented visual system for Creatye Studio. It translate
 
 ## Visual direction
 
-- Warm gray spatial canvas with light floating surfaces.
+- Luma-calibrated neutral canvas using `#dfdfdf` in light mode and `#141414` in dark mode, with semantic surface layers rather than pastel tinting.
 - Purposeful negative space and compact contextual page typography.
 - Neutral selection; black primary actions; semantic color only for meaning.
 - Broad, soft elevation only for floating surfaces, menus, dialogs, and command UI.
 - Rounded geometry that scales by role: 8 px controls, 12-16 px operational surfaces, 22-28 px spatial/creative surfaces, and full pills for short controls.
-- A single subdued AI halo behind the composer. Page-wide gradients and promotional hero chrome are forbidden.
-- Geist Sans for interface copy and Geist Mono for metrics, IDs, durations, resolutions, and timeline values.
+- A soft blue ambient wash behind the composer and compact product context. It remains a background atmosphere, not a component gradient or promotional hero.
+- A licensed system sans stack (`Helvetica Neue`, Helvetica, Arial, then Geist/system fallbacks) calibrated to the reference metrics; Geist Mono remains reserved for IDs, durations, resolutions, and timeline values. The proprietary Graphik asset is not bundled.
 
 ## Semantic tokens
 
@@ -37,7 +37,7 @@ The source of truth is `packages/ui/src/styles.css`. Components consume semantic
 | overlay | `--cr-overlay` | Modal backdrop |
 | focus-ring | `--cr-focus-ring` | Keyboard focus |
 
-Light and dark themes remap the same semantic roles. Dark mode uses layered warm-black surfaces instead of pure black slabs or neon contrast.
+Light and dark themes remap the same semantic roles. Light uses `#dfdfdf` canvas, `#eeeeee` navigation, `#ebebeb` input/muted surfaces, and `#f6f6f6` floating panels. Dark uses `#141414` canvas with `#202020`, `#222222`, `#282828`, and `#313131` layers instead of one flat slab or neon contrast.
 
 ## Foundation scales
 
@@ -58,18 +58,22 @@ Every interactive primitive uses native focusable elements, visible `:focus-visi
 ## Calibrated composition rules
 
 - The desktop shell reserves a 224 px track for a 200 px inset sidebar surface; sidebar rows are 32 px high with 12 px labels and neutral selection.
-- Product routes use a compact contextual header with a 15-16 px title and adjacent actions. The former eyebrow, large title, and explanatory paragraph combination is not an approved application-page pattern.
+- Product routes use a compact contextual header with a 15-16 px title. On desktop, route actions occupy their own 36 px row below the fixed utility pill instead of competing with it horizontally. The former eyebrow, large title, and explanatory paragraph combination is not an approved application-page pattern.
+- Product routes use the full available work area, begin at the same compact top offset as the reference workspace, and reserve only the utility pill footprint instead of centering content inside an arbitrary max-width.
+- The top utility search is scoped to the current route; the sidebar Search entry opens the system-wide destination search. Persistent inline search inputs are removed from product toolbars.
 - Search, filters, sorting, view controls, tabs, and chip rails use 32-38 px geometry and collapse through horizontal scrolling inside the component, never through document overflow.
 - Chips remain single-line. Tabs use a quiet underline and count pills. Steppers use connected current/completed/upcoming states.
 - Cards in normal flow do not cast persistent shadows. Media cards privilege the thumbnail; operational data privileges hairline rows and restrained surfaces.
 - Viewport-bound generation and inspector panels own their vertical scrolling. Scrollbars are 6 px, low-contrast, rounded, and become stronger only on hover.
 - The responsive sequence is full sidebar, intermediate icon rail, then dedicated mobile navigation. Mobile is not a compressed desktop page.
+- Signed-in account summaries use the shared circular profile image treatment; initials are only a fallback when no user image exists.
 
 ## Calibration routes
 
 - `/design-system`: foundations, states, light/dark, components, and responsive miniatures.
 - `/`: Dashboard calibration.
-- `/pages`: Connected Pages workspace with platform/search filters and status views.
+- `/pages`: Connected Pages workspace with platform/status controls, aligned operational columns, and contextual search in the top utility pill.
+- `/publishing`: Calendar/list scheduling workspace, exposed as Agendamentos in the primary sidebar.
 - `/automations`: Operational Automations workspace.
 - `/templates`: Template library calibration.
 - `/studio?step=customize`: Video Studio shell calibration.
@@ -80,7 +84,7 @@ Current code, semantic tokens, and this durable contract are the visual source o
 
 ## Guardrails
 
-- Do not add decorative gradients, glass surfaces, saturated icon tiles, or glow stacks.
+- Do not add decorative gradients, glass surfaces, saturated icon tiles, or stacked glows beyond the single ambient blue wash.
 - Do not introduce raw hex colors or one-off spacing in components.
 - Do not turn every content block into a card.
 - Do not use status badges for neutral metadata.
