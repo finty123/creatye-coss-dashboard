@@ -208,6 +208,8 @@ Use this index to discover relevant project documentation without loading everyt
 
 ## Implementation
 
+- `docs/product/FRONTEND_COMPLETION_MAP.md` - discovery inventory and route-by-route frontend implementation matrix for M006.5.
+- `docs/product/FRONTEND_COMPLETION_REPORT.md` - completed surfaces, interactions, states, responsive behavior, backend seams, validation evidence, and known limitations.
 - `docs/design-system/luma-reference-audit.md` - sanitized read-only structural audit that separates observed facts, approximate values, Creatye adaptations, and non-copy boundaries.
 - `docs/design-system/creatye-canvas.md` - implemented Creatye Canvas direction, semantic token contract, foundations, component inventory, calibration routes, and guardrails.
 - `docs/design-system/responsiveness.md` - responsive behavior and evidence for 390, 768, 1100, 1440, and 1920 px.
@@ -215,6 +217,8 @@ Use this index to discover relevant project documentation without loading everyt
 - `docs/design/reviews/M006_VISUAL_PARITY_AUDIT.md` - per-reference audit of all 31 local visual specifications and the required M006 corrections.
 - `docs/design/reviews/M006_FINAL_VISUAL_PARITY.md` - final surface-to-reference mapping, concrete parity evidence, screenshot inventory, and remaining fixture-level differences.
 - `apps/web/` - Next.js App Router foundation, shells, design-system playground, and visual calibration routes.
+- `apps/web/src/components/product/product-ui.tsx` - shared product composition primitives for headers, search, tabs, pagination, dialogs, drawers, empty states, and notices.
+- `apps/web/src/lib/product-fixtures.ts` - typed frontend fixtures for Pages, Templates, Studio, Automations, Publishing, and Analytics.
 - `apps/worker/` - buildable TypeScript worker foundation.
 - `packages/ui/` - implemented tokens, CSS, and reusable UI components.
 - `packages/shared/`, `packages/domain/`, `packages/observability/` - shared primitives, domain vocabulary, and logging foundation.

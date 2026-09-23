@@ -1,10 +1,4 @@
 import { DesktopShell } from "@/components/desktop-shell";
-import { AutomationsCalibration } from "@/components/screens/automations-calibration";
+import { AutomationsProduct } from "@/components/screens/automations-product";
 
-export default function AutomationsPage() {
-  return (
-    <DesktopShell active="Automations">
-      <AutomationsCalibration />
-    </DesktopShell>
-  );
-}
+export default function AutomationsPage() { return <DesktopShell active="Automations"><AutomationsProduct /></DesktopShell>; }

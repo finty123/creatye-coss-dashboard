@@ -1,12 +1,12 @@
 import { DesktopShell } from "@/components/desktop-shell";
-import { DesktopStudioCalibration, type StudioStep } from "@/components/screens/desktop-studio-calibration";
+import { StudioHistory, StudioProduct, type StudioStep } from "@/components/screens/studio-product";
 
 export default async function StudioPage({ searchParams }: { searchParams: Promise<{ step?: string }> }) {
   const requested = (await searchParams).step;
-  const step: StudioStep = requested === "select" || requested === "customize" || requested === "publish" ? requested : "select";
+  const step: StudioStep = requested === "select" || requested === "customize" || requested === "review" || requested === "publish" || requested === "history" ? requested : "select";
   return (
     <DesktopShell active="Video Studio">
-      <DesktopStudioCalibration step={step} />
+      {step === "history" ? <StudioHistory /> : <StudioProduct step={step} />}
     </DesktopShell>
   );
 }

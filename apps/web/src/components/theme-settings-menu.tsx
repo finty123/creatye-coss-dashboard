@@ -3,6 +3,7 @@
 import { Check, ChevronRight, MoreVertical } from "lucide-react";
 import { IconButton } from "@creatye/ui";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 type ThemeChoice = "light" | "dark" | "system";
 
@@ -63,11 +64,9 @@ export function TopActionsMenu() {
   return <div className="luma-actions-menu" ref={root}>
     <IconButton label="More options" aria-expanded={open} onClick={() => { setOpen((value) => !value); setThemeOpen(false); }}><MoreVertical size={16} strokeWidth={1.7} /></IconButton>
     {open ? <div className="luma-actions-dropdown" role="menu" aria-label="More options menu">
-      <button type="button" role="menuitem"><span>Select all</span><kbd>Ctrl+A</kbd></button>
-      <i />
-      <button type="button" role="menuitem"><span>Help</span><ChevronRight size={14} /></button>
+      <Link href="/help" role="menuitem"><span>Ajuda</span><ChevronRight size={14} /></Link>
       <button type="button" role="menuitem" aria-expanded={themeOpen} onClick={() => setThemeOpen((value) => !value)}><span>Theme</span><ChevronRight size={14} /></button>
-      <button type="button" role="menuitem"><span>Notification preferences</span></button>
+      <Link href="/settings?section=notifications" role="menuitem"><span>Preferências de notificação</span></Link>
       {themeOpen ? <div className="luma-theme-flyout" role="menu" aria-label="Theme">{options.map(({ value, label }) => <button key={value} type="button" role="menuitemradio" aria-checked={theme === value} onClick={() => selectTheme(value)}>{theme === value ? <Check size={14} /> : <span />}<span>{label}</span></button>)}</div> : null}
     </div> : null}
   </div>;

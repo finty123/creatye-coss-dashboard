@@ -1,6 +1,4 @@
 import { DesktopShell } from "@/components/desktop-shell";
-import { TemplateLibraryCalibration } from "@/components/screens/template-library-calibration";
+import { TemplateLibrary } from "@/components/screens/template-library";
 
-export default function TemplatesPage() {
-  return <DesktopShell active="Templates"><TemplateLibraryCalibration /></DesktopShell>;
-}
+export default function TemplatesPage() { return <DesktopShell active="Templates"><TemplateLibrary /></DesktopShell>; }

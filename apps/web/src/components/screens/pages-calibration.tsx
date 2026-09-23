@@ -1,284 +1,40 @@
 "use client";
 
-import {
-  Check,
-  ChevronDown,
-  CircleHelp,
-  FileSearch,
-  Instagram,
-  Monitor,
-  MoreHorizontal,
-  PanelsTopLeft,
-  Plus,
-  RefreshCw,
-} from "lucide-react";
-import { Button, IconButton, SearchInput, StatusBadge } from "@creatye/ui";
-import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import { ChevronDown, ExternalLink, Instagram, MoreHorizontal, Plus, RefreshCw } from "lucide-react";
+import { Button, IconButton } from "@creatye/ui";
+import { connectedPages, type ConnectionStatus } from "@/lib/product-fixtures";
+import { ConfirmActions, ProductDrawer, ProductEmpty, ProductModal, ProductNotice, ProductPage, ProductPagination, ProductTabs, SearchBox } from "@/components/product/product-ui";
 
-type PageStatus = "active" | "attention" | "inactive" | "hidden";
-type Platform = "all" | "facebook" | "instagram";
+const statusLabels: Record<ConnectionStatus, string> = { active: "Conectada", attention: "Requer atenção", inactive: "Inativa" };
 
-type ConnectedPage = {
-  id: string;
-  name: string;
-  initials: string;
-  platform: Exclude<Platform, "all">;
-  status: PageStatus;
-  detail: string;
-  sync: string;
-  tone: number;
-};
-
-const connectedPages: ConnectedPage[] = [
-  { id: "238874210991", name: "Ana Mercedes", initials: "AM", platform: "facebook", status: "active", detail: "Creator account", sync: "Updated 3 min ago", tone: 1 },
-  { id: "172440629384", name: "Jamile Souza", initials: "JS", platform: "facebook", status: "active", detail: "Business page", sync: "Updated 8 min ago", tone: 2 },
-  { id: "581397099126", name: "Agatha Moreira", initials: "AG", platform: "facebook", status: "active", detail: "Creator account", sync: "Updated 12 min ago", tone: 3 },
-  { id: "490018337742", name: "Lara Louis", initials: "LL", platform: "facebook", status: "active", detail: "Business page", sync: "Updated 18 min ago", tone: 4 },
-  { id: "724018395671", name: "Vanessa Lemos", initials: "VL", platform: "facebook", status: "active", detail: "Creator account", sync: "Updated 26 min ago", tone: 5 },
-  { id: "189422660731", name: "Monica Garcia", initials: "MG", platform: "facebook", status: "active", detail: "Business page", sync: "Updated 31 min ago", tone: 6 },
-  { id: "290118631205", name: "Julita Menezes", initials: "JM", platform: "facebook", status: "attention", detail: "Permission expired", sync: "Action required", tone: 2 },
-  { id: "581909003621", name: "Dra. Julia Marquez", initials: "JM", platform: "facebook", status: "attention", detail: "Review connection", sync: "Action required", tone: 4 },
-  { id: "310994552901", name: "Enfermeiro Bruno", initials: "EB", platform: "facebook", status: "inactive", detail: "Connection paused", sync: "Paused 2 days ago", tone: 3 },
-  { id: "771450228901", name: "Baby Santana", initials: "BS", platform: "facebook", status: "hidden", detail: "Hidden from workspace", sync: "Hidden 5 days ago", tone: 5 },
-];
-
-const statusTabs: Array<{ value: PageStatus; label: string; count: number }> = [
-  { value: "active", label: "Active", count: 30 },
-  { value: "attention", label: "Needs attention", count: 6 },
-  { value: "inactive", label: "Inactive", count: 2 },
-  { value: "hidden", label: "Hidden", count: 4 },
-];
-
-const platformOptions: Array<{ value: Platform; label: string; count: number }> = [
-  { value: "all", label: "All platforms", count: 36 },
-  { value: "facebook", label: "Facebook", count: 36 },
-  { value: "instagram", label: "Instagram", count: 0 },
-];
-
-const statusPresentation: Record<PageStatus, { label: string; intent: "success" | "warning" | "neutral" | "info" }> = {
-  active: { label: "Connected", intent: "success" },
-  attention: { label: "Needs attention", intent: "warning" },
-  inactive: { label: "Inactive", intent: "neutral" },
-  hidden: { label: "Hidden", intent: "info" },
-};
-
-function PlatformOptionIcon({ platform }: { platform: Platform }) {
-  if (platform === "instagram") return <Instagram size={16} aria-hidden />;
-  if (platform === "facebook") return <PanelsTopLeft size={16} aria-hidden />;
-  return <Monitor size={16} aria-hidden />;
-}
-
-function PlatformMark({ platform }: { platform: ConnectedPage["platform"] }) {
-  return (
-    <span className={`pages-platform-mark pages-platform-mark--${platform}`} aria-label={platform === "facebook" ? "Facebook" : "Instagram"}>
-      {platform === "facebook" ? "f" : <Instagram size={10} aria-hidden />}
-    </span>
-  );
-}
-
-function filterPages(status: PageStatus, platform: Platform, query: string) {
-  const normalizedQuery = query.trim().toLowerCase();
-  return connectedPages.filter((page) => {
-    const matchesStatus = page.status === status;
-    const matchesPlatform = platform === "all" || page.platform === platform;
-    const matchesQuery = !normalizedQuery || `${page.name} ${page.id}`.toLowerCase().includes(normalizedQuery);
-    return matchesStatus && matchesPlatform && matchesQuery;
-  });
-}
-
-function PlatformFilter({ platform, onChange }: { platform: Platform; onChange: (platform: Platform) => void }) {
-  const [open, setOpen] = useState(false);
-  const pickerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function closePicker(event: MouseEvent) {
-      if (!pickerRef.current?.contains(event.target as Node)) setOpen(false);
-    }
-    function closeOnEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(false);
-    }
-    document.addEventListener("mousedown", closePicker);
-    document.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.removeEventListener("mousedown", closePicker);
-      document.removeEventListener("keydown", closeOnEscape);
-    };
-  }, []);
-
-  const currentPlatform = platformOptions.find((option) => option.value === platform) ?? platformOptions[0]!;
-
-  return (
-    <div className="pages-platform-picker" ref={pickerRef}>
-      <Button
-        variant="secondary"
-        className="pages-platform-trigger"
-        aria-haspopup="menu"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <PlatformOptionIcon platform={platform} />
-        <span>{currentPlatform.label}</span>
-        <span className="pages-control-count">{currentPlatform.count}</span>
-        <ChevronDown size={14} aria-hidden />
-      </Button>
-      {open ? (
-        <div className="pages-platform-menu" role="menu" aria-label="Filter by platform">
-          {platformOptions.map((option) => (
-            <button
-              type="button"
-              role="menuitemradio"
-              aria-checked={platform === option.value}
-              className={platform === option.value ? "is-selected" : undefined}
-              key={option.value}
-              onClick={() => {
-                onChange(option.value);
-                setOpen(false);
-              }}
-            >
-              <PlatformOptionIcon platform={option.value} />
-              <span>{option.label}</span>
-              <span className="pages-menu-count">{option.count}</span>
-              {platform === option.value ? <Check size={14} aria-hidden /> : <span className="pages-check-placeholder" />}
-            </button>
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function StatusTabs({ status, onChange }: { status: PageStatus; onChange: (status: PageStatus) => void }) {
-  return (
-    <nav className="pages-status-tabs" aria-label="Page status">
-      {statusTabs.map((tab) => (
-        <button
-          type="button"
-          key={tab.value}
-          className={status === tab.value ? "is-active" : undefined}
-          aria-current={status === tab.value ? "page" : undefined}
-          onClick={() => onChange(tab.value)}
-        >
-          {tab.label}
-          <span>{tab.count}</span>
-        </button>
-      ))}
-    </nav>
-  );
-}
-
-function ConnectedPageList({
-  pages,
-  statusLabel,
-  selectedPage,
-  onSelect,
-}: {
-  pages: ConnectedPage[];
-  statusLabel: string;
-  selectedPage: string | null;
-  onSelect: (id: string | null) => void;
-}) {
-  if (!pages.length) {
-    return (
-      <section className="pages-list" aria-live="polite" aria-label={`${statusLabel} pages`}>
-        <div className="pages-empty">
-          <span><FileSearch size={26} aria-hidden /></span>
-          <strong>No {statusLabel} pages found</strong>
-          <p>Try a different platform or search term.</p>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="pages-list" aria-live="polite" aria-label={`${statusLabel} pages`}>
-      {pages.map((page) => {
-        const presentation = statusPresentation[page.status];
-        return (
-          <article className={selectedPage === page.id ? "is-selected" : undefined} key={page.id}>
-            <button
-              type="button"
-              className="pages-row-main"
-              onClick={() => onSelect(selectedPage === page.id ? null : page.id)}
-            >
-              <span className="pages-avatar" data-tone={page.tone}>
-                {page.initials}
-                <PlatformMark platform={page.platform} />
-              </span>
-              <span className="pages-identity">
-                <strong>{page.name}</strong>
-                <span>Page ID: {page.id}</span>
-                <small>Admin</small>
-              </span>
-              <span className="pages-activity">
-                <strong>{page.detail}</strong>
-                <span>{page.sync}</span>
-              </span>
-              <StatusBadge intent={presentation.intent}>{presentation.label}</StatusBadge>
-            </button>
-            <IconButton label={`More options for ${page.name}`} className="pages-row-actions">
-              <MoreHorizontal size={17} aria-hidden />
-            </IconButton>
-          </article>
-        );
-      })}
-    </section>
-  );
+function PageAvatar({ name, platform, color }: { name: string; platform: string; color: string }) {
+  return <span className="connected-page-avatar" style={{ "--page-color": color } as React.CSSProperties}>{name.split(" ").map((part) => part[0]).slice(0, 2).join("")}<i>{platform === "Instagram" ? <Instagram size={9} /> : "f"}</i></span>;
 }
 
 export function PagesCalibration() {
-  const [status, setStatus] = useState<PageStatus>("active");
-  const [platform, setPlatform] = useState<Platform>("all");
+  const [status, setStatus] = useState("all");
+  const [platform, setPlatform] = useState("all");
   const [query, setQuery] = useState("");
-  const [selectedPage, setSelectedPage] = useState<string | null>(null);
-  const visiblePages = useMemo(() => filterPages(status, platform, query), [platform, query, status]);
+  const [sort, setSort] = useState("recent");
+  const [page, setPage] = useState(1);
+  const [connectOpen, setConnectOpen] = useState(false);
+  const [selected, setSelected] = useState<(typeof connectedPages)[number] | null>(null);
+  const [notice, setNotice] = useState("");
+  const visible = useMemo(() => connectedPages.filter((item) => (status === "all" || item.status === status) && (platform === "all" || item.platform === platform) && `${item.name} ${item.handle}`.toLowerCase().includes(query.toLowerCase())).sort((a, b) => sort === "name" ? a.name.localeCompare(b.name) : a.lastSync.localeCompare(b.lastSync)), [platform, query, sort, status]);
+  const pages = Math.max(1, Math.ceil(visible.length / 5));
+  const pageItems = visible.slice((page - 1) * 5, page * 5);
+  const tabs = [{ id: "all", label: "Todas", count: connectedPages.length }, { id: "active", label: "Ativas", count: connectedPages.filter((item) => item.status === "active").length }, { id: "attention", label: "Atenção", count: connectedPages.filter((item) => item.status === "attention").length }, { id: "inactive", label: "Inativas", count: connectedPages.filter((item) => item.status === "inactive").length }];
 
-  const currentStatusLabel = statusTabs.find((tab) => tab.value === status)?.label.toLowerCase() ?? "active";
-
-  return (
-    <main className="pages-screen" aria-labelledby="pages-title">
-      <header className="pages-header">
-        <div>
-          <p className="pages-eyebrow">CONNECTED CHANNELS</p>
-          <h1 id="pages-title">Welcome back, Samuel.</h1>
-          <p>Manage the pages that power your content and automations.</p>
-        </div>
-        <div className="pages-view-switch" aria-label="Page views">
-          <button type="button" className="is-active" aria-pressed="true">Page list</button>
-          <button type="button" aria-pressed="false">Multi-mode</button>
-          <button type="button" aria-pressed="false">Templates</button>
-        </div>
-      </header>
-
-      <section className="pages-toolbar" aria-label="Page filters">
-        <PlatformFilter platform={platform} onChange={setPlatform} />
-
-        <SearchInput
-          className="pages-search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search pages"
-          aria-label="Search pages"
-        />
-
-        <Button className="pages-connect">
-          <Plus size={16} aria-hidden />
-          Connect page
-        </Button>
-      </section>
-
-      <StatusTabs status={status} onChange={setStatus} />
-      <ConnectedPageList
-        pages={visiblePages}
-        statusLabel={currentStatusLabel}
-        selectedPage={selectedPage}
-        onSelect={setSelectedPage}
-      />
-
-      <footer className="pages-footer">
-        <button type="button"><CircleHelp size={15} aria-hidden /> Need help?</button>
-        <span>Showing {visiblePages.length} of {statusTabs.find((tab) => tab.value === status)?.count ?? 0} pages</span>
-        <button type="button"><RefreshCw size={15} aria-hidden /> Refresh permissions</button>
-      </footer>
-    </main>
-  );
+  return <ProductPage eyebrow="Canais conectados" title="Páginas" description="Gerencie os canais que alimentam sua produção, suas automações e seus relatórios." actions={<><Button variant="quiet" onClick={() => setNotice("Permissões atualizadas com sucesso.")}><RefreshCw size={14} /> Atualizar permissões</Button><Button variant="primary" onClick={() => setConnectOpen(true)}><Plus size={14} /> Conectar página</Button></>}>
+    <div className="product-stat-grid"><div className="product-stat"><span>Páginas ativas</span><strong>6</strong><small>2 plataformas conectadas</small></div><div className="product-stat"><span>Alcance combinado</span><strong>250 mil</strong><small>+12,8% nos últimos 30 dias</small></div><div className="product-stat"><span>Automações vinculadas</span><strong>19</strong><small>16 ativas neste momento</small></div><div className="product-stat"><span>Permissões</span><strong>7/9</strong><small>2 conexões exigem revisão</small></div></div>
+    <div className="product-toolbar"><select aria-label="Filtrar plataforma" value={platform} onChange={(event) => { setPlatform(event.target.value); setPage(1); }} className="product-compact-select"><option value="all">Todas as plataformas</option><option>Instagram</option><option>Facebook</option></select><SearchBox value={query} onChange={(value) => { setQuery(value); setPage(1); }} placeholder="Pesquisar páginas" /><span className="product-toolbar-spacer" /><select aria-label="Ordenar páginas" value={sort} onChange={(event) => setSort(event.target.value)} className="product-compact-select"><option value="recent">Mais recentes</option><option value="name">Nome A–Z</option></select></div>
+    <ProductTabs items={tabs} active={status} onChange={(value) => { setStatus(value); setPage(1); }} />
+    {pageItems.length ? <div className="connected-pages-list">{pageItems.map((item) => <article key={item.id}><Link href={`/pages/${item.id}`}><PageAvatar name={item.name} platform={item.platform} color={item.color} /><span><strong>{item.name}</strong><small>{item.handle} · {item.platform}</small></span><span className="connected-page-detail"><strong>{item.followers}</strong><small>seguidores</small></span><span className="connected-page-detail"><strong>{item.automations}</strong><small>automações</small></span><span className="connected-page-detail"><strong>{item.lastSync}</strong><small>última sincronização</small></span><span className="product-status" data-status={item.status}>{statusLabels[item.status]}</span></Link><IconButton label={`Ações de ${item.name}`} size="sm" onClick={() => setSelected(item)}><MoreHorizontal size={15} /></IconButton></article>)}</div> : <ProductEmpty title="Nenhuma página encontrada" description="Ajuste a busca ou os filtros para voltar a visualizar suas conexões." action={<Button onClick={() => { setQuery(""); setStatus("all"); setPlatform("all"); }}>Limpar filtros</Button>} />}
+    <ProductPagination page={Math.min(page, pages)} pages={pages} onChange={setPage} />
+    {connectOpen ? <ProductModal title="Conectar uma página" description="Escolha a plataforma. A conexão real será integrada ao backend depois desta etapa visual." onClose={() => setConnectOpen(false)} footer={<ConfirmActions cancel="Cancelar" confirm="Continuar" onCancel={() => setConnectOpen(false)} onConfirm={() => { setConnectOpen(false); setNotice("Fluxo de conexão preparado para integração."); }} />}><button className="connection-option" type="button"><Instagram size={20} /><span><strong>Instagram</strong><small>Perfis profissionais e criadores</small></span><ChevronDown size={15} /></button><button className="connection-option" type="button"><b>f</b><span><strong>Facebook</strong><small>Páginas comerciais e comunidades</small></span><ChevronDown size={15} /></button><label className="product-check"><input type="checkbox" defaultChecked /> Sincronizar insights assim que a conexão for concluída</label></ProductModal> : null}
+    {selected ? <ProductDrawer title={selected.name} subtitle={`${selected.handle} · ${selected.platform}`} onClose={() => setSelected(null)} footer={<><Button variant="quiet" onClick={() => setSelected(null)}>Fechar</Button><Button variant="primary" onClick={() => setNotice("Permissões revisadas.")}>Revisar acesso</Button></>}><div className="product-preview" style={{ "--preview": selected.color } as React.CSSProperties}><div className="product-preview-copy"><strong>{selected.name}</strong><span>{selected.followers} seguidores</span></div></div><div>{["Conteúdo", "Mensagens", "Comentários", "Insights"].map((permission) => <div className="product-kpi" key={permission}><span>{permission}</span><strong>Permitido</strong></div>)}</div><Link className="product-link-button" href={`/pages/${selected.id}`}>Abrir visão completa <ExternalLink size={13} /></Link></ProductDrawer> : null}
+    {notice ? <ProductNotice onClose={() => setNotice("")}>{notice}</ProductNotice> : null}
+  </ProductPage>;
 }

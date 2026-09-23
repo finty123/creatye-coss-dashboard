@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "@creatye/ui/styles.css";
 import "./app.css";
 import "./creatye-canvas.css";
+import "./product-completion.css";
 
 export const metadata: Metadata = {
   title: "Creatye Studio",

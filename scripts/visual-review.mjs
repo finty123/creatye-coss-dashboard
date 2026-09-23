@@ -1,4 +1,6 @@
 import { chromium } from "playwright";
+import { mkdir } from "node:fs/promises";
+import path from "node:path";
 
 const baseUrlFlag = process.argv.indexOf("--base-url");
 const baseUrl =
@@ -7,47 +9,57 @@ const baseUrl =
   "http://127.0.0.1:3000";
 const viewports = [
   { name: "mobile-390", width: 390, height: 844 },
-  { name: "tablet-768", width: 768, height: 900 },
   { name: "halfwide-1100", width: 1100, height: 900 },
-  { name: "reference-1287", width: 1287, height: 913 },
-  { name: "desktop-1440", width: 1440, height: 1000 },
-  { name: "ultrawide-1920", width: 1920, height: 900 }
+  { name: "desktop-1440", width: 1440, height: 1000 }
 ];
 const surfaces = [
   { group: "dashboard", path: "/" },
   { group: "automations", path: "/automations" },
+  { group: "automation-detail", path: "/automations/comment-keyword" },
+  { group: "automation-builder", path: "/automations/comment-keyword/builder" },
   { group: "pages", path: "/pages" },
+  { group: "page-detail", path: "/pages/creatye-brasil" },
   { group: "templates", path: "/templates" },
-  { group: "studio", path: "/studio?step=customize" }
+  { group: "studio-select", path: "/studio?step=select" },
+  { group: "studio-customize", path: "/studio?step=customize" },
+  { group: "studio-review", path: "/studio?step=review" },
+  { group: "studio-publish", path: "/studio?step=publish" },
+  { group: "image-studio", path: "/image-studio" },
+  { group: "publishing", path: "/publishing" },
+  { group: "analytics", path: "/analytics" },
+  { group: "settings", path: "/settings" },
+  { group: "help", path: "/help" }
 ];
 const cases = surfaces.flatMap((surface) => viewports.map((viewport) => ({ ...surface, ...viewport, name: `${surface.group}-${viewport.name}` })));
 cases.push(
   { group: "dashboard", name: "dashboard-actions-menu-reference-1287", path: "/", width: 1287, height: 913, actionsMenu: true },
-  { group: "pages", name: "pages-platform-menu-reference-1287", path: "/pages", width: 1287, height: 913, pagesMenu: true },
+  { group: "pages", name: "pages-connect-reference-1287", path: "/pages", width: 1287, height: 913, connectDialog: true },
   { group: "pages", name: "pages-dark-1440", path: "/pages", width: 1440, height: 1000, dark: true },
   { group: "design-system", name: "design-system-light-1440", path: "/design-system", width: 1440, height: 1000 },
   { group: "design-system", name: "design-system-dark-1440", path: "/design-system", width: 1440, height: 1000, dark: true }
 );
 
+const screenshotDirectory = path.resolve(".agent/tmp/frontend-completion-review");
+await mkdir(screenshotDirectory, { recursive: true });
 const browser = await chromium.launch();
 const results = [];
 for (const testCase of cases) {
   const page = await browser.newPage({ viewport: { width: testCase.width, height: testCase.height } });
   await page.goto(`${baseUrl}${testCase.path}`, { waitUntil: "networkidle", timeout: 60_000 });
   await page.waitForFunction(() => Array.from(document.images).every((item) => item.complete), undefined, { timeout: 60_000 });
-  if (testCase.pagesMenu) {
-    const platform = page.getByRole("button", { name: /All platforms/ });
-    if (await platform.count()) await platform.first().click();
+  if (testCase.connectDialog) {
+    const connect = page.getByRole("button", { name: /Conectar página/ });
+    if (await connect.count()) await connect.first().click({ force: true });
     await page.waitForTimeout(200);
   }
   if (testCase.dark || testCase.actionsMenu) {
     const more = page.getByRole("button", { name: "More options" });
-    if (await more.count()) await more.first().click();
+    if (await more.count()) await more.first().click({ force: true });
     const themeMenu = page.getByRole("menuitem", { name: "Theme" });
-    if (await themeMenu.count()) await themeMenu.click();
+    if (await themeMenu.count()) await themeMenu.click({ force: true });
     if (testCase.dark) {
       const dark = page.getByRole("menuitemradio", { name: "Dark" });
-      if (await dark.count()) await dark.click();
+      if (await dark.count()) await dark.click({ force: true });
     }
     await page.waitForTimeout(200);
   }
@@ -73,6 +85,7 @@ for (const testCase of cases) {
     };
   });
   await page.evaluate(() => document.activeElement?.blur());
+  await page.screenshot({ path: path.join(screenshotDirectory, `${testCase.name}.png`), fullPage: true });
   results.push({ ...testCase, focusSequence, ...diagnostics });
   await page.close();
 }

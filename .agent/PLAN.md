@@ -97,6 +97,19 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 ### M007 - Core + Database + Authentication
 - [ ] Begin only when explicitly requested.
 
+### M006.5 - Frontend UX Completion
+- [x] Complete discovery and create the frontend route/screen implementation matrix.
+- [x] Finalize the global product shell and navigation interactions.
+- [x] Complete Dashboard and Pages/Page Detail.
+- [x] Complete Models/Templates.
+- [x] Complete Video Studio and Image Studio journeys.
+- [x] Complete Automations, Automation Detail, Activity, and Workflow Builder.
+- [x] Complete Publishing and Analytics.
+- [x] Complete Settings, Help/Feedback, and Mobile UX.
+- [x] Complete global state, pagination, search/filter/sort, and cross-flow validation.
+- [x] Complete real rendered review across routes, target widths, and themes.
+- [x] Pass full technical and Jaxx verification, then publish only with explicit user authorization.
+
 ## Working agreements
 - One feature = one branch = one agent.
 - Every meaningful action is appended to `AGENT_LOG.jsonl`.
