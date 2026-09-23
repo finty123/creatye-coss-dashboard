@@ -47,6 +47,7 @@ Future UI must use existing tokens and components before creating new primitives
 ## Routes
 
 - `/` - Desktop Command Center calibration.
+- `/pages` - Connected Pages workspace.
 - `/automations` - Desktop Automations data UI calibration.
 - `/studio` - Desktop Studio calibration.
 - `/mobile` - Mobile shell and Mobile Studio calibration.
@@ -72,9 +73,9 @@ Light and dark modes share semantic tokens.
 
 Dark mode uses layered surfaces and restrained contrast. It does not use neon green, pure black slabs, glow, or decorative gradients.
 
-## Visual reference compliance
+## Current visual contract
 
-M006 adopts:
+M006 currently uses:
 
 - Linear-inspired compact sidebar structure and active-state restraint;
 - Brex/Ramp-inspired operational Command Center structure;
@@ -83,9 +84,9 @@ M006 adopts:
 - current and approved mobile creator patterns through preview-forward mobile UI;
 - Geist-like typography/control discipline.
 
-It does not copy external brands, product semantics, exact layouts, colors, or spacing.
+It does not copy external brands, product semantics, exact layouts, colors, or spacing. Historical reference screenshots are not required implementation context.
 
-The final remediation screenshots are generated in `.agent/tmp/m006-visual-remediation-final-2026-09-18/`. The review set covers Command Center at 1440 and 1200, Automations at 1440, Studio at 1440 and 1200, Mobile at 390, and Design System in light and dark modes.
+`npm run visual:review` performs screenshot-free responsive diagnostics across current product routes and themes. Review the running application for visual approval.
 
 ## Future UI governance
 

@@ -88,6 +88,10 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Audit all 31 visual references and map concrete parity requirements before the definitive refactor.
 - [x] Implement the definitive visual refactor across foundations, shell, Command Center, Automations, Desktop Studio, and Mobile Studio.
 - [x] Generate, compare, correct, and inspect definitive screenshots at every required viewport.
+- [x] Recalibrate the product shell into the original Creatye Canvas visual language with Creatye navigation and persistent System/Light/Dark support.
+- [x] Implement the `/pages` workspace with Botcake-inspired organization and Creatye design-system execution.
+- [x] Expand responsive automated diagnostics to Dashboard, Pages, Automations, Templates, Studio, and Design System.
+- [x] Adapt the Jaxx project skills and control-plane state to the current implemented product instead of historical reference packs.
 - [ ] Receive explicit product-owner visual approval.
 
 ### M007 - Core + Database + Authentication

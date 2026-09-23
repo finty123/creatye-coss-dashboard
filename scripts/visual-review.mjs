@@ -1,12 +1,10 @@
 import { chromium } from "playwright";
-import { mkdir } from "node:fs/promises";
 
 const baseUrlFlag = process.argv.indexOf("--base-url");
 const baseUrl =
   (baseUrlFlag >= 0 ? process.argv[baseUrlFlag + 1] : undefined) ??
   process.env.CREATYE_VISUAL_BASE_URL ??
   "http://127.0.0.1:3000";
-const outputRoot = ".agent/tmp/m006-creatye-canvas";
 const viewports = [
   { name: "mobile-390", width: 390, height: 844 },
   { name: "tablet-768", width: 768, height: 900 },
@@ -30,8 +28,6 @@ cases.push(
   { group: "design-system", name: "design-system-light-1440", path: "/design-system", width: 1440, height: 1000 },
   { group: "design-system", name: "design-system-dark-1440", path: "/design-system", width: 1440, height: 1000, dark: true }
 );
-
-for (const group of ["dashboard", "automations", "pages", "templates", "studio", "design-system"]) await mkdir(`${outputRoot}/${group}`, { recursive: true });
 
 const browser = await chromium.launch();
 const results = [];
@@ -76,10 +72,8 @@ for (const testCase of cases) {
       focusVisible: focusStyle.outlineStyle !== "none" || focusStyle.boxShadow !== "none"
     };
   });
-  const file = `${outputRoot}/${testCase.group}/${testCase.name}.png`;
   await page.evaluate(() => document.activeElement?.blur());
-  await page.screenshot({ path: file, fullPage: true });
-  results.push({ ...testCase, file, focusSequence, ...diagnostics });
+  results.push({ ...testCase, focusSequence, ...diagnostics });
   await page.close();
 }
 await browser.close();

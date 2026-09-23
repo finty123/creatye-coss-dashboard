@@ -375,7 +375,7 @@ Format: lightweight ADRs.
 
 ## ADR-054: Visual review is part of the M006 verification gate
 - **Date:** 2026-09-18
-- **Status:** accepted
+- **Status:** superseded by ADR-056
 - **Context:** M006 cannot pass on compile-only validation because visual coherence is an explicit requirement.
 - **Decision:** Add Playwright-based visual review through `npm run visual:review`.
 - **Consequences:** Screenshots are generated under `.agent/tmp/m006-visual/` for review and remain outside version control.
@@ -386,3 +386,17 @@ Format: lightweight ADRs.
 - **Context:** The product owner requested a new original design system informed by a read-only structural audit of Luma while prohibiting copying of proprietary identity, copy, assets, or implementation.
 - **Decision:** Adopt Creatye Canvas: a warm spatial shell, light floating surfaces, neutral selection, black primary actions, semantic color, restrained AI atmosphere, Geist typography, a full desktop sidebar, an intermediate icon rail, and a dedicated mobile composition.
 - **Consequences:** Future calibration and UI implementation must consume the shared semantic tokens/components, retain the documented non-copy boundary, and validate Dashboard, Templates, and Studio before broader screen migration.
+
+## ADR-056: Visual diagnostics are automated and screenshot-independent
+- **Date:** 2026-09-22
+- **Status:** accepted
+- **Context:** The implemented design system and current product code are now the source of truth. Retained screenshot packs add storage and can make agents follow obsolete visual states.
+- **Decision:** Keep Playwright-based responsive, overflow, image, theme, and focus diagnostics, but do not retain generated screenshots as project context or required evidence.
+- **Consequences:** `.agent/tmp/` is disposable, ignored, and unnecessary for normal agent context. Visual changes are governed by semantic tokens, current components, durable design documents, and live product review.
+
+## ADR-057: Pages borrows organization, not identity
+- **Date:** 2026-09-22
+- **Status:** accepted
+- **Context:** The product owner approved a Botcake-like information organization for connected Pages while requiring consistency with the active Creatye Canvas design system.
+- **Decision:** Use the scannable header, platform/search controls, status views, and page list organization as structural inspiration while preserving Creatye navigation, typography, tokens, surfaces, themes, controls, and interaction behavior.
+- **Consequences:** Future Pages work must not import Botcake branding, exact styling, assets, colors, or copy. Production data integration remains separate from the fixture-based M006 UI.

@@ -14,7 +14,7 @@ Creatye Canvas supports ultrawide desktop, half-ultrawide windows, notebooks, ta
 
 ## Required viewport evidence
 
-The local visual review captures Dashboard, Templates, and Studio at 390, 768, 1100, 1440, and 1920 px. It also captures the Design System in light and dark themes.
+The local visual review exercises Dashboard, Pages, Automations, Templates, and Studio at 390, 768, 1100, 1287, 1440, and 1920 px. It also exercises the Design System and Pages in light/dark-relevant states.
 
 Automated diagnostics verify:
 
@@ -23,6 +23,8 @@ Automated diagnostics verify:
 - a valid sequence of keyboard-focusable controls;
 - visible focus outlines on the inspected sequence;
 - the correct navigation mode at every breakpoint.
+
+The diagnostics do not retain screenshots. Product review happens against the running application, while code, tokens, and durable design documentation remain authoritative.
 
 ## Composition rules
 
@@ -36,4 +38,3 @@ Automated diagnostics verify:
 ## Studio translation
 
 Desktop Studio uses five coordinated regions: tool rail, media library, central preview, contextual inspector, and timeline. At half width, the inspector yields first. On mobile, preview and tool rail come first, followed by media and timeline; inspector controls move to contextual drawers in production flows.
-

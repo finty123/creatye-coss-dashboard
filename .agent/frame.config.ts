@@ -10,8 +10,8 @@ const config = {
     name: "Creatye Studio",
   },
   theme: {
-    primaryColor: "#2563eb",
-    borderRadius: "0.5rem",
+    primaryColor: "#151514",
+    borderRadius: "1rem",
   },
   repos: [
     {

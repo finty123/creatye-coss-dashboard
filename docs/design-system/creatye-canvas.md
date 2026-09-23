@@ -59,10 +59,14 @@ Every interactive primitive uses native focusable elements, visible `:focus-visi
 
 - `/design-system`: foundations, states, light/dark, components, and responsive miniatures.
 - `/`: Dashboard calibration.
+- `/pages`: Connected Pages workspace with platform/search filters and status views.
+- `/automations`: Operational Automations workspace.
 - `/templates`: Template library calibration.
 - `/studio?step=customize`: Video Studio shell calibration.
 
 These routes are calibration surfaces. They intentionally use realistic Creatye vocabulary and fixtures, but they do not implement backend behavior.
+
+Current code, semantic tokens, and this durable contract are the visual source of truth. Historical screenshots and temporary visual output are not required context for future implementation.
 
 ## Guardrails
 
@@ -72,4 +76,3 @@ These routes are calibration surfaces. They intentionally use realistic Creatye 
 - Do not use status badges for neutral metadata.
 - Do not increase title scale to marketing-page proportions.
 - Check an existing component, pattern, and token before introducing a new primitive.
-

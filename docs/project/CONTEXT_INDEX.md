@@ -151,7 +151,7 @@ Use this index to discover relevant project documentation without loading everyt
 
 - `docs/design/calibration/VISUAL_CALIBRATION_SPEC.md` - start here for any visual calibration, visual lock, reference alignment, or implementation-prep visual task.
 - `docs/design/calibration/VISUAL_DIRECTION.md` - load for visual personality, current Creatye preservation, brand posture, color/type/control/card/studio/mobile/analytics direction.
-- `docs/design/calibration/REFERENCE_BOARD.md` - load when checking approved references, what to borrow, and what not to copy.
+- `docs/design/calibration/REFERENCE_BOARD.md` - historical calibration rationale only; current implementation must use Creatye Canvas code and tokens as source of truth.
 - `docs/design/calibration/CALIBRATION_SURFACES.md` - load when preparing or reviewing calibration surfaces.
 - `docs/design/calibration/DESKTOP_STUDIO_DIRECTION.md` - load for Desktop Studio visual flow, Edit/Review/Publish Setup/Publish-Schedule journey, and Studio complexity guardrails.
 - `docs/design/calibration/MOBILE_STUDIO_DIRECTION.md` - load for Mobile Studio as a first-class creation experience.
@@ -168,7 +168,7 @@ Use this index to discover relevant project documentation without loading everyt
 - Data UI task -> `VISUAL_CALIBRATION_SPEC`, `DATA_UI_DIRECTION`, relevant Web/Mobile UX docs.
 - Analytics visual task -> `VISUAL_CALIBRATION_SPEC`, `ANALYTICS_DIRECTION`, relevant product and design docs.
 - Controls/typography task -> `VISUAL_CALIBRATION_SPEC`, `CONTROL_FINISHING`, `docs/design/TYPOGRAPHY.md`, relevant component taxonomy.
-- Reference check -> `VISUAL_CALIBRATION_SPEC`, `REFERENCE_BOARD`, then the relevant specialized calibration doc.
+- Current visual check -> `docs/design-system/creatye-canvas.md`, current route implementation, and the relevant specialized calibration doc.
 
 ## Technical Architecture
 
@@ -225,8 +225,9 @@ Use this index to discover relevant project documentation without loading everyt
 - UI component task -> `docs/implementation/M006_IMPLEMENTATION_GUIDE.md`, `packages/ui/`, `docs/design/DESIGN_SYSTEM_SPEC.md`, `docs/design/calibration/VISUAL_CALIBRATION_SPEC.md`.
 - Design token task -> `packages/ui/src/styles.css`, `docs/design/TOKEN_ARCHITECTURE.md`, `docs/design/COLOR_SYSTEM.md`, `docs/design/TYPOGRAPHY.md`, `docs/design/SHAPE_ELEVATION.md`.
 - Desktop shell task -> `apps/web/src/components/desktop-shell.tsx`, `docs/ux/web/APPLICATION_SHELL.md`, `docs/ux/web/NAVIGATION.md`, `docs/design/calibration/VISUAL_DIRECTION.md`.
-- Mobile shell task -> `apps/web/src/components/mobile-shell.tsx`, `docs/ux/mobile/APPLICATION_SHELL.md`, `docs/ux/mobile/NAVIGATION.md`, `docs/design/references/06-mobile/`.
-- Studio UI task -> `apps/web/src/components/screens/desktop-studio-calibration.tsx`, `apps/web/src/components/screens/mobile-calibration.tsx`, `docs/design/references/04-studio/`, `docs/design/calibration/DESKTOP_STUDIO_DIRECTION.md`, `docs/design/calibration/MOBILE_STUDIO_DIRECTION.md`.
-- Command Center task -> `apps/web/src/components/screens/command-center.tsx`, `docs/design/calibration/DASHBOARD_DIRECTION.md`, `docs/design/references/02-command-center/`.
-- Data UI / Automations task -> `apps/web/src/components/screens/automations-calibration.tsx`, `docs/design/calibration/DATA_UI_DIRECTION.md`, `docs/design/references/03-data-ui/`.
-- Visual review task -> `docs/design/reviews/M006_VISUAL_PARITY_AUDIT.md`, `scripts/visual-review.mjs`, then inspect final screenshots in `.agent/tmp/m006-definitive-visual/` and record parity in `docs/design/reviews/M006_FINAL_VISUAL_PARITY.md`.
+- Mobile shell task -> `apps/web/src/components/mobile-shell.tsx`, `docs/ux/mobile/APPLICATION_SHELL.md`, `docs/ux/mobile/NAVIGATION.md`, and current mobile route behavior.
+- Studio UI task -> `apps/web/src/components/screens/desktop-studio-calibration.tsx`, `apps/web/src/components/screens/mobile-calibration.tsx`, `docs/design/calibration/DESKTOP_STUDIO_DIRECTION.md`, `docs/design/calibration/MOBILE_STUDIO_DIRECTION.md`.
+- Command Center task -> `apps/web/src/components/screens/command-center.tsx`, `docs/design/calibration/DASHBOARD_DIRECTION.md`, and current Dashboard behavior.
+- Pages task -> `apps/web/src/components/screens/pages-calibration.tsx`, `docs/ux/web/PRODUCT_AREAS.md`, `docs/design/calibration/DATA_UI_DIRECTION.md`, and Creatye Canvas tokens.
+- Data UI / Automations task -> `apps/web/src/components/screens/automations-calibration.tsx`, `docs/design/calibration/DATA_UI_DIRECTION.md`, and current Automations behavior.
+- Visual review task -> `scripts/visual-review.mjs`, current routes, and `docs/design-system/creatye-canvas.md`; diagnostics are screenshot-independent.
