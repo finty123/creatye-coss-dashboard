@@ -7,10 +7,16 @@ const baseUrl =
   (baseUrlFlag >= 0 ? process.argv[baseUrlFlag + 1] : undefined) ??
   process.env.CREATYE_VISUAL_BASE_URL ??
   "http://127.0.0.1:3000";
+const outputFlag = process.argv.indexOf("--output");
+const outputDirectory =
+  (outputFlag >= 0 ? process.argv[outputFlag + 1] : undefined) ??
+  ".agent/tmp/frontend-completion-review";
 const viewports = [
   { name: "mobile-390", width: 390, height: 844 },
+  { name: "tablet-768", width: 768, height: 1024 },
   { name: "halfwide-1100", width: 1100, height: 900 },
-  { name: "desktop-1440", width: 1440, height: 1000 }
+  { name: "desktop-1440", width: 1440, height: 1000 },
+  { name: "wide-1920", width: 1920, height: 1080 }
 ];
 const surfaces = [
   { group: "dashboard", path: "/" },
@@ -39,13 +45,14 @@ cases.push(
   { group: "design-system", name: "design-system-dark-1440", path: "/design-system", width: 1440, height: 1000, dark: true }
 );
 
-const screenshotDirectory = path.resolve(".agent/tmp/frontend-completion-review");
+const screenshotDirectory = path.resolve(outputDirectory);
 await mkdir(screenshotDirectory, { recursive: true });
 const browser = await chromium.launch();
 const results = [];
 for (const testCase of cases) {
   const page = await browser.newPage({ viewport: { width: testCase.width, height: testCase.height } });
   await page.goto(`${baseUrl}${testCase.path}`, { waitUntil: "networkidle", timeout: 60_000 });
+  await page.addStyleTag({ content: "nextjs-portal { display: none !important; }" });
   await page.waitForFunction(() => Array.from(document.images).every((item) => item.complete), undefined, { timeout: 60_000 });
   if (testCase.connectDialog) {
     const connect = page.getByRole("button", { name: /Conectar página/ });

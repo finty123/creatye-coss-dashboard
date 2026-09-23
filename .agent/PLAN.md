@@ -110,6 +110,15 @@ High-level roadmap for Creatye Studio. Ordered by priority.
 - [x] Complete real rendered review across routes, target widths, and themes.
 - [x] Pass full technical and Jaxx verification, then publish only with explicit user authorization.
 
+### M006.6 - Authenticated Visual Calibration
+- [x] Audit the available authenticated Luma session without changing account state or consuming credits.
+- [x] Record sanitized structural evidence for shell, navigation, surfaces, typography, controls, chips, cards, states, responsive behavior, and dark mode.
+- [x] Replace Page Hero Headers with compact contextual tops across shared product pages.
+- [x] Calibrate Creatye semantic colors, sidebar geometry, icon rail behavior, controls, tabs, chip rails, cards, steppers, and internal scrollbars.
+- [x] Preserve Creatye routes, product vocabulary, fixtures, interactions, themes, and backend boundaries.
+- [x] Update the design-system guardian and durable Creatye Canvas contract.
+- [x] Verify typecheck, lint, production build, interactive states, focus, images, and horizontal overflow across 85 rendered scenarios.
+
 ## Working agreements
 - One feature = one branch = one agent.
 - Every meaningful action is appended to `AGENT_LOG.jsonl`.

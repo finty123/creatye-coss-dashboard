@@ -400,3 +400,10 @@ Format: lightweight ADRs.
 - **Context:** The product owner approved a Botcake-like information organization for connected Pages while requiring consistency with the active Creatye Canvas design system.
 - **Decision:** Use the scannable header, platform/search controls, status views, and page list organization as structural inspiration while preserving Creatye navigation, typography, tokens, surfaces, themes, controls, and interaction behavior.
 - **Consequences:** Future Pages work must not import Botcake branding, exact styling, assets, colors, or copy. Production data integration remains separate from the fixture-based M006 UI.
+
+## ADR-058: Application pages use compact contextual tops
+- **Date:** 2026-09-23
+- **Status:** accepted
+- **Context:** The authenticated structural audit confirmed that the strongest workspace hierarchy comes from compact context, grouped controls, and surface rhythm rather than a repeated eyebrow, large title, and explanatory paragraph stack.
+- **Decision:** Creatye application routes use a compact 15-16 px contextual title with adjacent actions. Page Hero Headers are not an approved application-shell pattern. AI composer headings and rare product-level display moments remain separate, intentional patterns.
+- **Consequences:** New routes must place explanatory content in the workflow, empty state, help text, or object context where it is actionable. Shared page composition, responsive diagnostics, and design governance enforce the compact pattern.

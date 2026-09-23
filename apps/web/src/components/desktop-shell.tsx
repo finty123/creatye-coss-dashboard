@@ -25,15 +25,15 @@ const navigation = [
 ] as const;
 
 function NavigationLink({ label, href, icon: Icon, active }: (typeof navigation)[number] & { active: string }) {
-  return <Link href={href} className="cr-sidebar-item" aria-current={active === label || (active === "Home" && label === "Dashboard") ? "page" : undefined}><Icon size={15} strokeWidth={1.65} /><span>{label}</span></Link>;
+  return <Link href={href} className="cr-sidebar-item" aria-label={label} title={label} aria-current={active === label || (active === "Home" && label === "Dashboard") ? "page" : undefined}><Icon size={15} strokeWidth={1.65} /><span>{label}</span></Link>;
 }
 
 export function DesktopShell({ active, children }: { active: string; mode?: "standard" | "studio"; children: React.ReactNode }) {
   const sidebar = <Sidebar className="luma-sidebar" footer={<div className="creatye-usage"><div><span>Monthly usage</span><strong>68%</strong></div><i><b /></i><small>32 hours remaining</small></div>}>
-    <button className="luma-account" type="button"><span className="luma-avatar">SC</span><strong>Samuel Cruz</strong><ChevronDown size={14} strokeWidth={1.6} /></button>
+    <button className="luma-account" type="button" aria-label="Conta de Samuel Cruz"><span className="luma-avatar">SC</span><strong>Samuel Cruz</strong><ChevronDown size={14} strokeWidth={1.6} /></button>
     <div className="luma-sidebar-divider" />
     <SidebarSection label="Workspace">{navigation.map((item) => <NavigationLink key={item.label} {...item} active={active} />)}</SidebarSection>
-    <SidebarSection label="Manage"><Link href="/settings" className="cr-sidebar-item" aria-current={active === "Settings" ? "page" : undefined}><Settings size={15} strokeWidth={1.65} /><span>Settings</span></Link><Link href="/help" className="cr-sidebar-item" aria-current={active === "Help" ? "page" : undefined}><CircleHelp size={15} strokeWidth={1.65} /><span>Help & feedback</span></Link></SidebarSection>
+    <SidebarSection label="Manage"><Link href="/settings" className="cr-sidebar-item" aria-label="Settings" title="Settings" aria-current={active === "Settings" ? "page" : undefined}><Settings size={15} strokeWidth={1.65} /><span>Settings</span></Link><Link href="/help" className="cr-sidebar-item" aria-label="Help & feedback" title="Help & feedback" aria-current={active === "Help" ? "page" : undefined}><CircleHelp size={15} strokeWidth={1.65} /><span>Help & feedback</span></Link></SidebarSection>
   </Sidebar>;
 
   const controls = <ApplicationShellControls />;

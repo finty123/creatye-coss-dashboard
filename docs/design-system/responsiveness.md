@@ -14,7 +14,7 @@ Creatye Canvas supports ultrawide desktop, half-ultrawide windows, notebooks, ta
 
 ## Required viewport evidence
 
-The local visual review exercises Dashboard, Pages, Automations, Templates, and Studio at 390, 768, 1100, 1287, 1440, and 1920 px. It also exercises the Design System and Pages in light/dark-relevant states.
+The local visual review exercises all current product routes at 390, 768, 1100, 1440, and 1920 px, with additional 1287 px interaction references. It also exercises the Design System and Pages in light/dark-relevant states. The 2026-09-23 calibration gate covered 85 rendered scenarios.
 
 Automated diagnostics verify:
 

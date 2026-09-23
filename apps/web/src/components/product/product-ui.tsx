@@ -4,8 +4,8 @@ import type { ReactNode } from "react";
 import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { Button, IconButton } from "@creatye/ui";
 
-export function ProductPage({ eyebrow, title, description, actions, children, className = "" }: { eyebrow?: string; title: string; description: string; actions?: ReactNode; children: ReactNode; className?: string }) {
-  return <div className={`product-page ${className}`}><header className="product-header"><div>{eyebrow ? <span className="product-eyebrow">{eyebrow}</span> : null}<h1>{title}</h1><p>{description}</p></div>{actions ? <div className="product-header-actions">{actions}</div> : null}</header>{children}</div>;
+export function ProductPage({ title, actions, children, className = "" }: { eyebrow?: string; title: string; description?: string; actions?: ReactNode; children: ReactNode; className?: string }) {
+  return <div className={`product-page ${className}`}><header className="product-header"><h1>{title}</h1>{actions ? <div className="product-header-actions">{actions}</div> : null}</header>{children}</div>;
 }
 
 export function SearchBox({ value, onChange, placeholder = "Pesquisar" }: { value: string; onChange: (value: string) => void; placeholder?: string }) {

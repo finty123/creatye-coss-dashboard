@@ -1,6 +1,6 @@
 # Luma visual reference audit
 
-> Read-only audit performed on 2026-09-22 in the authenticated Luma workspace supplied by the product owner. This document records patterns, not proprietary implementation. No generation, upload, creation, deletion, billing change, account change, invitation, or credit-consuming action was performed.
+> Read-only audits performed on 2026-09-22 and 2026-09-23 in the authenticated Luma workspace supplied by the product owner. This document records patterns, not proprietary implementation. No generation, upload, creation, deletion, billing change, account change, invitation, or credit-consuming action was performed.
 
 ## Scope and method
 
@@ -9,6 +9,21 @@ The audit covered the global shell, Recents, Shared With You, Boards, Projects, 
 Representative elements were inspected through the rendered DOM and computed styles. Values below are intentionally limited to visual-system evidence: geometry, semantic color roles, type scale, spacing, radius, elevation, state behavior, and layout decisions. No HTML, CSS bundle, copy, logo, image, or proprietary asset was copied into Creatye.
 
 No screenshots are stored in the repository. The live workspace exposed account identity, email, credit balance, private media, and team data; retaining captures would conflict with the requirement to remove or conceal personal information. The written observations below are the sanitized evidence.
+
+### 2026-09-23 calibration pass
+
+The second pass concentrated on Boards, Projects, Discover, Members, and Library in the available authenticated dark session. It verified the following rendered measurements and state behavior:
+
+- The desktop navigation region occupies 224 px of layout width while the visible inset navigation surface is approximately 200 px wide.
+- Navigation rows render at 32 px high with 12 px / 18 px labels, 8 px icon gaps, 12 px horizontal padding, and full rounding. Selected fill is reverse color at approximately 10%.
+- The dark canvas is `rgb(20 20 20)`. Common panels are `rgb(32 32 32)` to `rgb(40 40 40)`, with 0.5 px inset reverse edges instead of ordinary card shadows.
+- The Boards heading is 20 px / 30 px at regular weight. The composer is 564 x 109 px with a 28 px radius, 16 px padding, 14 px / 20 px prompt text, and 36 px voice/send targets.
+- The top utility group uses 32 px circular actions inside an approximately 40 px floating pill.
+- Discover filter chips are 36 px high, use 11 px / 12 px medium labels, 12 px horizontal padding, 20 px rounding, and 1 px reverse-color borders around 10%. The active chip is inverse neutral.
+- Discover uses a three-column media-first grid. Inspected cards were approximately 313 x 263 px with 16 px outer rounding, 12 px / 16 px semibold titles, and a compact 86 px copy region under the media.
+- Projects uses only a compact 16-20 px contextual title and right-aligned view/search/filter utilities. It does not use an eyebrow, marketing title, and explanatory paragraph stack.
+- Members and Library use broad 24 px surfaces and hairline row separation. Empty/loading states are low-contrast, spatial, and concise.
+- Loaded responsive rules include thresholds around 1500, 1250, 768, 600, and 480 px. Creatye keeps its independent 1180/720 adaptation because the product must support half-ultrawide operational layouts.
 
 ## 1. Facts observed
 
