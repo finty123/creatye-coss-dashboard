@@ -18,17 +18,20 @@ const viewports = [
 const surfaces = [
   { group: "dashboard", path: "/" },
   { group: "automations", path: "/automations" },
+  { group: "pages", path: "/pages" },
   { group: "templates", path: "/templates" },
   { group: "studio", path: "/studio?step=customize" }
 ];
 const cases = surfaces.flatMap((surface) => viewports.map((viewport) => ({ ...surface, ...viewport, name: `${surface.group}-${viewport.name}` })));
 cases.push(
   { group: "dashboard", name: "dashboard-actions-menu-reference-1287", path: "/", width: 1287, height: 913, actionsMenu: true },
+  { group: "pages", name: "pages-platform-menu-reference-1287", path: "/pages", width: 1287, height: 913, pagesMenu: true },
+  { group: "pages", name: "pages-dark-1440", path: "/pages", width: 1440, height: 1000, dark: true },
   { group: "design-system", name: "design-system-light-1440", path: "/design-system", width: 1440, height: 1000 },
   { group: "design-system", name: "design-system-dark-1440", path: "/design-system", width: 1440, height: 1000, dark: true }
 );
 
-for (const group of ["dashboard", "automations", "templates", "studio", "design-system"]) await mkdir(`${outputRoot}/${group}`, { recursive: true });
+for (const group of ["dashboard", "automations", "pages", "templates", "studio", "design-system"]) await mkdir(`${outputRoot}/${group}`, { recursive: true });
 
 const browser = await chromium.launch();
 const results = [];
@@ -36,6 +39,11 @@ for (const testCase of cases) {
   const page = await browser.newPage({ viewport: { width: testCase.width, height: testCase.height } });
   await page.goto(`${baseUrl}${testCase.path}`, { waitUntil: "networkidle", timeout: 60_000 });
   await page.waitForFunction(() => Array.from(document.images).every((item) => item.complete), undefined, { timeout: 60_000 });
+  if (testCase.pagesMenu) {
+    const platform = page.getByRole("button", { name: /All platforms/ });
+    if (await platform.count()) await platform.first().click();
+    await page.waitForTimeout(200);
+  }
   if (testCase.dark || testCase.actionsMenu) {
     const more = page.getByRole("button", { name: "More options" });
     if (await more.count()) await more.first().click();

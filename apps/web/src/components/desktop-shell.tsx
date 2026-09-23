@@ -19,7 +19,7 @@ import { TopActionsMenu } from "./theme-settings-menu";
 
 const navigation = [
   { label: "Dashboard", href: "/", icon: Home },
-  { label: "Pages", href: "#pages", icon: FileImage },
+  { label: "Pages", href: "/pages", icon: FileImage },
   { label: "Automations", href: "/automations", icon: Workflow },
   { label: "Video Studio", href: "/studio?step=customize", icon: MonitorPlay },
   { label: "Image Studio", href: "/studio?step=customize&type=image", icon: ImageIcon },
